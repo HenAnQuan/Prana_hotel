@@ -1,76 +1,72 @@
 <template>
-  <div  class=" container">
+  <div class="container">
     <Header :movetoFirstSecond="movetoFirstSecond" :isFixed="true"></Header>
-    <Login/>
+    <Login />
     <div class="body">
       <!-- 首屏背景 -->
-      <div class="firstScreen w-100">
-        <img src="../assets/img/banner1-1.jpg" alt="" class="w-100"/>
-      </div>
-      
-      <!-- 酒店预订 -->
-      <BookingHotel/>
-
-      <!-- 品牌故事  养生疗愈 酒店合作 -->
-      <div class="brand-story">
-        <div class="brand brand1">
-          <div class="brand-img">
-            <img src="../assets/img/brandstroy1.jpg" alt="">
-          </div>
-          <div class="brand-info">
-            <h3 class="brand-title">品牌故事</h3>
-            <p class="brand-content">世界上有这样一种酒店，他们避开热闹的著名景点，选择偏僻而纯净的自然环境；他们拥有唤活身心和疗愈的氛围，提供专业的健康生活咨询、各种疗法、课程和活动，让客人在放松享受的同时，获得持续健康的生活方式。</p>
-            <a class="brand-more" href=""><span>了解更多</span></a>
-          </div>
-        </div>
-        <div class="brand brand2">
-          <div class="brand-img">
-            <img src="../assets/img/brandstroy2.jpg" alt="">
-          </div>
-          <div class="brand-info">
-            <h3 class="brand-title">养生疗愈</h3>
-            <p class="brand-content">作为顶级养生酒店，我们汇聚国内外顶级的自然疗法理疗师、中医师、禅修大师、健身教练、瑜伽和太极老师，通过各种能量平衡的设施与服务，让客人在海滨茶园的氛围中静心、清零，开启奢华酒店全新的健康养生时代。
-</p>
-            <a class="brand-more" href=""><span>了解更多</span></a>
-          </div>
-        </div>
-        <div class="brand brand3">
-          <div class="brand-img">
-            <img src="../assets/img/brandstroy3.jpg" alt="">
-          </div>
-          <div class="brand-info">
-            <h3 class="brand-title">酒店合作</h3>
-            <p class="brand-content">璞纳养生酒店集团是国内第一家集养生酒店咨询、开发和运营管理为一体的酒店集团。作为业主，我们拥有舟山璞纳养生酒店；作为咨询机构，我们服务过上海阿纳迪酒店、腾冲东山养生酒店、三亚海棠湾养生酒店等等。
-</p>
-            <a class="brand-more" href=""><span>了解更多</span></a>
-          </div>
-        </div>
-      </div>
-      
-      <!-- 酒店轮播图 -->
-      <div class="main-info">
-        <swiper ref="mySwiper" :options="swiperOptions"> 
-          <swiper-slide v-for="(item,index) in banners" :key="index">
-            <img :src="item" alt=""/>
+      <div class="firstScreen">
+        <swiper ref="mySwiper" :options="swiperOptions1">
+          <swiper-slide v-for="(item, index) in banners1" :key="index">
+            <div>
+              <div class="title">
+                <p>{{ title[index] }}</p>
+              </div>
+              <img :src="item" alt="" />
+            </div>
           </swiper-slide>
-          <!-- <div class="swiper-pagination" slot="pagination"></div>
-          <div class="swiper-button-prev" slot="button-prev"></div>
-          <div class="swiper-button-next" slot="button-next"></div> -->
         </swiper>
       </div>
 
-      <!-- 酒店部分连接 -->
-      <div class="hotel-link">
-        <div class="hotel hotel1"><span>酒店概览</span></div>
-        <div class="hotel hotel2"><span>酒店设施</span></div>
-        <div class="hotel hotel3"><span>养生套餐</span></div>
-        <div class="hotel hotel4"><span>每日工坊</span></div>
+      <!-- 酒店预订 -->
+      <BookingHotel />
+
+      <!-- 欢迎光临 -->
+      <div class="welcome">
+        <div class="welText">
+          <div class="wel_title">
+            <h2>欢迎光临</h2>
+            <h3>舟山璞纳养生酒店</h3>
+          </div>
+          <div class="wel_textInfo">
+            <p>
+              舟山璞纳养生酒店为追求身心健康的旅行者带来独一无二的假期体验：<br />在享受悠然时光的同时，提升健康状况，并获得持续平衡的生活方式。
+              “走遍千山万水，也不过是为了找到一条走回自己内心的路。”<br />舟山璞纳养生酒店，正是这条道路上的教育、哺育和传播能量的圣地。
+            </p>
+          </div>
+        </div>
+        <div class="welLine"></div>
       </div>
 
-
-
+      <!-- 酒店链接轮播图 -->
+      <swiper ref="mySwiper" :options="swiperOption_">
+        <swiper-slide v-for="(item, index) in banners2" :key="index">
+          <div class="carousel_board">
+            <div class="explore_more">
+              <div>
+                <p>{{ hotelInstr[index] }}</p>
+                <div class="more">
+                  <div>
+                    探索更多<img
+                      src="../assets/icon/more.png"
+                      alt=""
+                      width="14px"
+                      height="14px"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="hotel_show">
+              <img :src="item" alt="" width="100%" />
+            </div>
+          </div>
+        </swiper-slide>
+        <!-- <div class="swiper-pagination" slot="pagination"></div>
+          <div class="swiper-button-prev" slot="button-prev"></div>
+          <div class="swiper-button-next" slot="button-next"></div> -->
+      </swiper>
     </div>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
@@ -79,208 +75,256 @@
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 import BookingHotel from "@/components/BookingHotel.vue";
-import Login from "@/components/Login.vue"
-
-
+import Login from "@/components/Login.vue";
 
 export default {
   name: "Index",
   components: {
-    Header,Footer,BookingHotel,Login
+    Header,
+    Footer,
+    BookingHotel,
+    Login,
   },
   data() {
     return {
       w: "",
       h: "",
-      movetoFirstSecond:false,
-      banners:[
+      movetoFirstSecond: false,
+      swiper2:"",
+      banners1: [
+        require("../assets/img/banner1-1-1.jpg"),
+        require("../assets/img/banner1-1-2.jpg"),
+        require("../assets/img/banner1-1-3.jpg"),
+      ],
+      title: [
+        "- 重塑平衡的生活方式 -",
+        "- 返璞归真的桃源秘境 - ",
+        "- 身心灵的疗愈盛宴 -",
+      ],
+      carouselActiveIndex: 1,
+      banners2: [
         require("../assets/img/banner1-2-1.jpg"),
         require("../assets/img/banner1-2-2.jpg"),
         require("../assets/img/banner1-2-3.jpg"),
-        ],
-      swiperOptions: {
-          pagination: {
-            el: '.swiper-pagination',
-          },
-          loop: true,
-          autoplay: {
-            delay: 4000,
-            disableOnInteraction: false,
-          },
-          navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          },
-        }
+        require("../assets/img/banner1-2-4.jpg"),
+        require("../assets/img/banner1-2-5.jpg"),
+      ],
+      swiperOptions1: {
+        pagination: {
+          el: ".swiper-pagination",
+        },
+        loop: true,
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      },
+      // swiperOptions2: {
+      //   pagination: {
+      //     el: ".swiper-pagination",
+      //   },
+      //   loop: true,
+      //   autoplay: {
+      //     delay: 4000,
+      //     disableOnInteraction: false,
+      //   },
+      //   navigation: {
+      //     nextEl: ".swiper-button-next",
+      //     prevEl: ".swiper-button-prev",
+      //   },
+      //   on: {
+      //     slideChange: function () {
+      //       // this.carouselActiveIndex = this.activeIndex;
+      //       // console.log("改变了，activeIndex为" + carouselActiveIndex);
+      //     },
+      //   },
+      // },
+      hotelInstr: [
+        "作为一家纯粹的养生酒店，我们致力于帮助客人从忙碌和压力中回归自我，达到身体、情绪、大脑和心灵上的幸福与健康，为客人提供养生知识的普及，使客人离开酒店之后依然保持平衡和愉悦的生活状态，让酒店的客人从身、心、灵全方位完全释放，享受生命的丰足与神圣！",
+        "酒店拥有80间客房、原生态有机健康餐厅、400平米的宴会厅、3间健康咨询室、18间理疗室、泳池、多功能健身房、瑜伽亭、森林功法平台、多功能工坊、儿童俱乐部等。",
+        "推出2晚、3晚和5晚的“净化排毒”“舒压放松”“睡眠提升”“颈椎舒缓”“体重管理”和“亲子养生假期”套餐，通过各种能量平衡的设施与服务，将全球前沿的健康理念融入度假体验当中。",
+        "我们每日都有健康又有趣的工坊和课程，等待你来参加，包括瑜伽、禅修、烹饪工坊等等。住店客人都是免费的哦！",
+        "在近1000平米的汤泉和盐雾室中放松身心，享受水和热带给身体由内而外的疗愈。我们的汤泉技术来自日本，包含铁泉——气血之汤、氡温泉——贵族养生汤、偏硅酸温泉——瘦身汤，以及促进呼吸道净化排毒的烟雾疗愈。",
+      ],
     };
   },
-  computed:{
+  computed: {
+    // swiper() {
+    //     return this.$refs.mySwiper.swiper;
+    //   },
+    swiperOption_() {
+      let that = this;
+      let option = {
+        pagination: {
+          el: ".swiper-pagination",
+        },
+        loop: true,
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        on: {
+          slideChange: function () {
+            // 当swiper进行轮播的时候,将当前展示的banenr的下标传到data中
+            const realIndex = this.realIndex;   //从0开始的下标
+            const activeIndex = this.activeIndex;   //从1开始的下标
+            // console.log( realIndex);
+            that.carouselActiveIndex = activeIndex;
+            // 把swiper对象传出去，当后续点击下方链接可以切换到对应的banner
+            console.log(this.el);
+            that.swiper2 =  this.el;
+          },
+        }
+      };
+      return option;
+    },
   },
   mounted() {
-    this.w = document.documentElement.clientWidth/1920;
-    this.h = document.documentElement.clientHeight/1080;
+    this.w = document.documentElement.clientWidth / 1920;
+    this.h = document.documentElement.clientHeight / 1080;
   },
-  methods:{
-    getSize(){
-      this.w = document.documentElement.clientWidth/1920;
-      this.h = document.documentElement.clientHeight/1080;
-      console.log(document.documentElement.clientWidth,document.documentElement.clientHeight);
+  methods: {
+    click(){
+      console.log('执行了click');
+    },
+    getSize() {
+      this.w = document.documentElement.clientWidth / 1920;
+      this.h = document.documentElement.clientHeight / 1080;
+      console.log(
+        document.documentElement.clientWidth,
+        document.documentElement.clientHeight
+      );
     },
     // 添加事件：首屏高度，当滚轮滚动到第二屏达到导航条下方时（浏览器可视区域高度-导航条高度时）；更改 movetoFirstSecond 值为 ture 。导航条通过类样式绑定切换到黑底的样式
-    intoSecondscreen(){
+    intoSecondscreen() {
       // console.log(document.body.clientHeight,window.screen.height,document.documentElement.clientHeight);        //用于获取 文档高度 , 屏幕高度 ,   浏览器可视区域高度
       // console.log(window.scrollY);      //获取滚轮滚动的高度。初始为0，向下滚动增加，向上滚动数值减小；同时当滚动到文档最下方时，得到的最大值与浏览器可视区域高度相加等于文档高度
-      window.scrollY >= document.documentElement.clientHeight-120 ? this.movetoFirstSecond = true : this.movetoFirstSecond = false;
-      // console.log(window.scrollY,document.documentElement.clientHeight-120,this.movetoFirstSecond);    测试
+      // window.scrollY >= document.documentElement.clientHeight-120 ? this.movetoFirstSecond = true : this.movetoFirstSecond = false;
+      // 更换触发header导航样式替换的条件
+      window.scrollY >= 100
+        ? (this.movetoFirstSecond = true)
+        : (this.movetoFirstSecond = false);
     },
-    
   },
-  created(){  
+  created() {
     // 添加监听，实时获取窗口的高度和宽度
-    window.addEventListener('resize', this.getSize);
+    window.addEventListener("resize", this.getSize);
     this.getSize();
     // 添加监听，实时获取滚动条滚动的高度
-    window.addEventListener('scroll', this.intoSecondscreen);
+    window.addEventListener("scroll", this.intoSecondscreen);
     this.intoSecondscreen();
   },
-  destroyed(){
+  destroyed() {
     // window.removeEventListener('resize', this.getSize);
-    window.removeEventListener('scroll', this.intoSecondscreen);
-  }
+    window.removeEventListener("scroll", this.intoSecondscreen);
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 // @import url(../assets/css/global.css);
-
-.brand-story{
-  display: flex;
-  // align-items: center;
-  align-items: flex-start;
-  justify-content: center;
-  margin-top: 115px;
-  padding:0 240px;
-}
-.brand{
-  // width: 515px;
-  flex: 1;
-}
-.brand1,.brand2{
-  margin-right: 20px;
-}
-.brand-img{
-  // width: 515px;
-  height: 382px;
-  width: 100%;
-  height: 100%;
-  border: 1px solid #404040;
-  text-align: center;
-  padding: 12px;
-  box-sizing: border-box;
-}
-.brand-img img{
-  width: 100%;
-  height: 100%;
-}
-.brand-info{
-  margin-left:15px;
-}
-.brand-title{
-  font-size: 16px;
-  margin-top: 42px;
-  margin-bottom: 29px;
-}
-.brand-content{
-  text-align:justify;
-  text-justify:inter-ideograph;
-  font-size: 14px;
-  line-height: 31px;
-  margin-bottom: 29px;
-}
-.brand-more{
-  padding-bottom: 6px;
-  text-decoration: underline;
-  color: #404040;
-  font-size: 14px;
-}
-
-
-.main-info{
-  margin-top: 96px;
-  width: 100%;
-  height: 100%;
-}
-.swiper-slide{
-  text-align: center;
-}
-.swiper-slide>img{
-  width: 100%;
-  height: 100%;
-}
-
-
-.hotel-link{
-  margin-top: 62px;
-  display: flex;
-  padding: 0 240px;
-  justify-content: center;
-}
-.hotel{
-  // width: 370px;
-  // height: 274px;
-  width: 100%;
-  background-image: url(../assets/img/hotel-link1.jpg);
-  background-repeat: no-repeat;
-  background-position-x: center;
-  background-position-y: center;
-  text-align: center;
+.title {
+  position: absolute;
   color: white;
-  line-height: 275px;
+  top: 50%;
+  left: 50%;
+  font-size: 36px;
+  transform: translate(-50%, -50%);
+}
+.welcome {
+  padding: 80px 240px;
+}
+.welText {
+  display: flex;
+  align-items: center;
+}
+.welcome h2 {
   font-size: 14px;
+  margin-bottom: 20px;
 }
-.hotel1{
-  background-image: url(../assets/img/hotel-link1.jpg);
+.welcome h3 {
+  font-size: 16px;
+  white-space: nowrap;
 }
-.hotel2{
-  background-image: url(../assets/img/hotel-link2.jpg);
+.wel_textInfo {
+  margin-left: 60px;
 }
-.hotel3{
-  background-image: url(../assets/img/hotel-link3.jpg);
+.wel_textInfo p {
+  line-height: 28px;
 }
-.hotel4{
-  background-image: url(../assets/img/hotel-link4.jpg);
-}
-.hotel span{
-  vertical-align:middle;
-  display:inline-block;
-}
-.hotel-link>.hotel:not(:last-child){
-  margin-right: 20px;
+.welLine {
+  border-bottom: 1px solid #839c98;
+  margin-top: 10px;
 }
 
-
-
+.carousel_board {
+  display: flex;
+  align-items: stretch;
+}
+.explore_more {
+  flex: 1;
+  border: 1px solid red;
+  position: relative;
+  padding: 20px;
+}
+.explore_more > div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.explore_more p {
+  line-height: 28px;
+  text-align: justify;
+}
+.more > div {
+  display: flex;
+  justify-content: space-between;
+  width: 80px;
+  padding: 10px;
+  border-top: 1px solid #404040;
+  border-bottom: 1px solid #404040;
+  margin: 60px auto 0 auto;
+}
+.more img {
+  vertical-align: middle;
+}
+.hotel_show {
+  flex: 3;
+}
+.hotel_show img {
+  vertical-align: middle;
+}
 
 @media screen and(max-width: 1440px) {
-  .brand-story{padding: 0 120px;}
-  .hotel-link{padding: 0 120px;}
+  .welcome {
+    padding: 60px 120px;
+  }
 }
 @media screen and(max-width: 1024px) {
-  .brand-story{padding: 0 60px;}
-  .hotel-link{padding: 0 60px;}
+  .welcome {
+    padding: 60px 60px;
+  }
 }
 @media screen and(max-width: 992px) {
-  .brand-story{padding: 0 20px;}
-  .hotel-link{padding: 0 20px;}
+  .welcome {
+    padding: 60px 20px;
+  }
+
+  .wel_textInfo {
+    margin-left: 40px;
+  }
 }
 @media screen and(max-width: 810px) {
-  .hotel-link>.hotel:not(:last-child){margin-right: 10px;}
 }
 @media screen and(max-width: 660px) {
 }
-
-
-
-
-
 </style>

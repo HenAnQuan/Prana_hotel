@@ -1,73 +1,142 @@
 <template>
-  <div class="header" :class="{ 'header-fixed': isFixed }">
+  
+  <div>
     <!-- 当滚动到第二屏达到导航条的位置时，加载另一个 header2 样式；  首屏时,movetoFirstSecond值为false，加载header1样式 -->
-    <div v-if="movetoFirstSecond" class="header2">
-      <div class="logo">
-        <router-link to="/"
-          ><img
-            src="../assets/icon/logo2.png"
-            alt=""
-            width="80px"
-            height="48px"
-        /></router-link>
-      </div>
-      <div class="nav">
-        <ul>
-          <li>
-            <router-link to="/" class="navItem">
-              <img
-                src="../assets/icon/hotel2.png"
-                alt=""
-                width="22px"
-                height="22px" /><span>酒店和度假村</span>
-              <div></div
-            ></router-link>
-          </li>
-          <li>
-            <router-link to="/brandstory" class="navItem">
-              <img
-                src="../assets/icon/brand2.png"
-                alt=""
-                width="21px"
-                height="21px" /><span>品牌故事</span>
-              <div></div
-            ></router-link>
-          </li>
-          <li>
-            <router-link to="/healthcare" class="navItem">
-              <img
-                src="../assets/icon/health2.png"
-                alt=""
-                width="21px"
-                height="21px" /><span>养生疗愈</span>
-              <div></div
-            ></router-link>
-          </li>
-          <li>
-            <router-link to="/cooperation" class="navItem">
-              <img
-                src="../assets/icon/cooperation2.png"
-                alt=""
-                width="22px"
-                height="22px" /><span>酒店合作</span>
-              <div></div
-            ></router-link>
-          </li>
-          <li class="login"  @click="login">
-            <img
-              src="../assets/icon/login2.png"
+    <div class="header" :class="{ 'header-fixed': isFixed }" v-if="port == 1">
+      <!-- 当滚动到第二屏达到导航条的位置时，加载另一个 header2 样式；  首屏时,movetoFirstSecond值为false，加载header1样式 -->
+      <div v-if="movetoFirstSecond" class="header2">
+        <div class="logo">
+          <router-link to="/"
+            ><img
+              src="../assets/icon/logo2.png"
               alt=""
-              width="22px"
-              height="22px"
-            /><span>登陆</span>
-          </li>
-          <li class="language"><span>中文</span></li>
-        </ul>
+              width="80px"
+              height="48px"
+          /></router-link>
+        </div>
+        <div class="nav">
+          <ul>
+            <li>
+              <!-- <router-link to="/" class="navItem" :class="{'router-link-exact-active': $route.name == 'Index'}"> -->
+              <router-link to="/" class="navItem">
+                <img
+                  src="../assets/icon/hotel2.png"
+                  alt=""
+                  width="22px"
+                  height="22px" /><span>酒店和度假村</span>
+                <div></div
+              ></router-link>
+            </li>
+            <li>
+              <router-link to="/brandstory" class="navItem">
+                <img
+                  src="../assets/icon/brand2.png"
+                  alt=""
+                  width="21px"
+                  height="21px" /><span>品牌故事</span>
+                <div></div
+              ></router-link>
+            </li>
+            <li>
+              <router-link to="/healthcare" class="navItem">
+                <img
+                  src="../assets/icon/health2.png"
+                  alt=""
+                  width="21px"
+                  height="21px" /><span>养生疗愈</span>
+                <div></div
+              ></router-link>
+            </li>
+            <li>
+              <router-link to="/cooperation" class="navItem">
+                <img
+                  src="../assets/icon/cooperation2.png"
+                  alt=""
+                  width="22px"
+                  height="22px" /><span>酒店合作</span>
+                <div></div
+              ></router-link>
+            </li>
+            <li class="login" @click="login">
+              <img
+                src="../assets/icon/login2.png"
+                alt=""
+                width="22px"
+                height="22px"
+              /><span>登陆</span>
+            </li>
+            <li class="language"><span>中文</span></li>
+          </ul>
+        </div>
+      </div>
+      <!-- 当首屏时加载图片 使用 header1样式 -->
+      <div v-else class="header1">
+        <div class="logo">
+          <router-link to="/"
+            ><img
+              src="../assets/icon/logo1.png"
+              alt=""
+              width="80px"
+              height="48px"
+          /></router-link>
+        </div>
+        <div class="nav">
+          <ul>
+            <li>
+              <router-link to="/" class="navItem"
+                ><img
+                  src="../assets/icon/hotel1.png"
+                  alt=""
+                  width="22px"
+                  height="22px" /><span>酒店和度假村</span>
+                <div></div
+              ></router-link>
+            </li>
+            <li>
+              <router-link to="/brandstory" class="navItem">
+                <img
+                  src="../assets/icon/brand1.png"
+                  alt=""
+                  width="21px"
+                  height="21px" /><span>品牌故事</span>
+                <div></div
+              ></router-link>
+            </li>
+            <li>
+              <router-link to="/healthcare" class="navItem">
+                <img
+                  src="../assets/icon/health1.png"
+                  alt=""
+                  width="21px"
+                  height="21px" /><span>养生疗愈</span>
+                <div></div
+              ></router-link>
+            </li>
+            <li>
+              <router-link to="/cooperation" class="navItem">
+                <img
+                  src="../assets/icon/cooperation1.png"
+                  alt=""
+                  width="22px"
+                  height="22px" /><span>酒店合作</span>
+                <div></div
+              ></router-link>
+            </li>
+            <li class="login" @click="login">
+              <img
+                src="../assets/icon/login1.png"
+                alt=""
+                width="22px"
+                height="22px"
+              /><span>登陆</span>
+            </li>
+            <li class="language"><span>中文</span></li>
+          </ul>
+        </div>
       </div>
     </div>
-    <!-- 当首屏时加载图片 使用 header1样式 -->
-    <div v-else class="header1">
-      <div class="logo">
+    <div v-if="port == 2">
+      <div class="item-logo header3">
         <router-link to="/"
           ><img
             src="../assets/icon/logo1.png"
@@ -75,59 +144,58 @@
             width="80px"
             height="48px"
         /></router-link>
+        <li class="tologin" @click="login">
+          <img
+            src="../assets/icon/login1.png"
+            alt=""
+            width="22px"
+            height="22px"
+          />
+          <span class="tologin-text" style="margin-left: 10px">登陆</span>
+        </li>
       </div>
-      <div class="nav">
-        <ul>
-          <li>
-            <router-link to="/" class="navItem"
-              ><img
-                src="../assets/icon/hotel1.png"
-                alt=""
-                width="22px"
-                height="22px" /><span>酒店和度假村</span>
-              <div></div
-            ></router-link>
-          </li>
-          <li>
-            <router-link to="/brandstory" class="navItem">
-              <img
-                src="../assets/icon/brand1.png"
-                alt=""
-                width="21px"
-                height="21px" /><span>品牌故事</span>
-              <div></div
-            ></router-link>
-          </li>
-          <li>
-            <router-link to="/healthcare" class="navItem">
-              <img
-                src="../assets/icon/health1.png"
-                alt=""
-                width="21px"
-                height="21px" /><span>养生疗愈</span>
-              <div></div
-            ></router-link>
-          </li>
-          <li>
-            <router-link to="/cooperation" class="navItem">
-              <img
-                src="../assets/icon/cooperation1.png"
-                alt=""
-                width="22px"
-                height="22px" /><span>酒店合作</span>
-              <div></div
-            ></router-link>
-          </li>
-          <li class="login" @click="login">
-            <img
-              src="../assets/icon/login1.png"
-              alt=""
-              width="22px"
-              height="22px"
-            /><span>登陆</span>
-          </li>
-          <li class="language"><span>中文</span></li>
-        </ul>
+
+      <div class="item">
+        <router-link to="/" class="move">
+          <img
+            src="../assets/icon/hotel1.png"
+            alt=""
+            width="22px"
+            height="22px"
+          />
+          <span>酒店和度假村</span>
+          <div></div>
+        </router-link>
+        <router-link to="/brandstory" class="move">
+          <img
+            src="../assets/icon/brand1.png"
+            alt=""
+            width="21px"
+            height="21px"
+          />
+          <span>品牌故事</span>
+          <div></div>
+        </router-link>
+        <router-link to="/healthcare" class="move">
+          <img
+            src="../assets/icon/health1.png"
+            alt=""
+            width="21px"
+            height="21px"
+          />
+          <span>养生疗愈</span>
+          <div></div>
+        </router-link>
+        <router-link to="/cooperation" class="move">
+          <img
+            src="../assets/icon/cooperation1.png"
+            alt=""
+            width="22px"
+            height="22px"
+          />
+          <span>酒店合作</span>
+          <div></div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -135,18 +203,34 @@
 
 <script>
 export default {
-  created(){
-    this.$store.commit('OpenLogPanel',false);
+  created() {
+    this.$store.commit("OpenLogPanel", false);
   },
   data() {
     return {
       // openLogPanel: false,
+      port: 1, //1 pc端  2 移动端
     };
   },
+  mounted() {
+    if (this._isMobile()) {
+      console.log("手机端");
+      this.port = 2;
+    } else {
+      console.log("pc端");
+      this.port = 1;
+    }
+  },
   methods: {
+    _isMobile() {
+      let flag = navigator.userAgent.match(
+        /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+      );
+      return flag;
+    },
     login() {
       // this.openLogPanel = true;
-      this.$store.commit('OpenLogPanel',true);
+      this.$store.commit("OpenLogPanel", true);
       console.log(this.$store.state.isOpenLogPanel);
     },
   },
@@ -156,11 +240,52 @@ export default {
 
 <style scoped lang="scss">
 // @import url(../assets/css/reset.css);
-a:focus, a:hover{
+// 移动端样式开始
+.item .router-link-exact-active div {
+  display: none;
+}
+.tologin{
+  display: flex;
+  align-items: center;
+}
+.tologin-text{
+  font-size: 17px;
+  color: #ffffff;
+}
+.item-logo{
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.item {
+  width: 100%;
+  display: flex;
+  background-color: rgba(0,0,0,0.9);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.move {
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+.move span {
+  margin-left: 20px;
+}
+// 移动端样式结束
+
+
+a:focus,
+a:hover {
   color: #23527c;
   text-decoration: underline;
 }
-.header{
+.header {
   top: 0;
   width: 100%;
 }
@@ -168,6 +293,21 @@ a:focus, a:hover{
   position: fixed;
   z-index: 99999;
 }
+
+
+
+// 移动端样式开始
+.header3 {
+  height: 70px;
+  display: flex;
+  width: 100%;
+  background-color: rgba(0,0,0,0.5);
+  justify-content: space-between;
+  color: white;
+}
+// 移动端样式开结束
+
+
 .header1 {
   height: 80px;
   display: flex;
@@ -189,8 +329,8 @@ a:focus, a:hover{
   justify-content: space-between;
   color: #404040;
 }
-.header1,.header2 {
-
+.header1,
+.header2 {
 }
 .header1 > .nav > ul > li span {
   color: white;
@@ -198,6 +338,7 @@ a:focus, a:hover{
 .header2 > .nav > ul > li span {
   color: #404040;
 }
+
 
 .logo {
   margin-left: 240px;
@@ -221,6 +362,10 @@ a:focus, a:hover{
   margin-top: 3px;
 }
 .navItem div {
+  margin-top: 6px;
+  margin-bottom: 1px;
+}
+.router-link-exact-active div {
   width: 100%;
   height: 1px;
   background-color: white;
@@ -260,25 +405,37 @@ a:focus, a:hover{
   align-items: center;
 }
 
-// @media (min-width: 768px) and (max-width: 991px) {}
-// @media (min-width: 992px) and (max-width: 1199px) {}
-// @media (min-width: 1200px) and (max-width: 1439px) {}
-// @media (min-width: 1440px) {}
 @media screen and(max-width: 1440px) {
-  .logo {margin-left: 120px;}
-  .nav{margin-right: 120px;}
+  .logo {
+    margin-left: 120px;
+  }
+  .nav {
+    margin-right: 120px;
+  }
 }
 @media screen and(max-width: 1024px) {
-  .logo {margin-left: 60px;}
-  .nav{margin-right: 60px;}
+  .logo {
+    margin-left: 60px;
+  }
+  .nav {
+    margin-right: 60px;
+  }
 }
 @media screen and(max-width: 992px) {
-  .logo {margin-left: 20px;}
-  .nav{margin-right: 20px;}
+  .logo {
+    margin-left: 20px;
+  }
+  .nav {
+    margin-right: 20px;
+  }
 }
 @media screen and(max-width: 810px) {
-  .navItem{padding-left: 30px;}
-  .login{margin: 0 30px;}
+  .navItem {
+    padding-left: 30px;
+  }
+  .login {
+    margin: 0 30px;
+  }
 }
 @media screen and(max-width: 660px) {
 }

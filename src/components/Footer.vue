@@ -1,5 +1,6 @@
 <template>
-  <div class="footer">
+<div>
+    <div class="footer" v-if="port == 1">
       <!-- tripadvisor评论 -->
       <div class="tripadvisor">
           <div class="tripadvisor-logo"><img src="../assets/icon/tripadvisor.png" alt="" width="175px"><p>前往店评Prana璞纳养生酒店</p></div>
@@ -38,15 +39,166 @@
           </div>
       </div>
   </div>
+
+  <div class="item-footer" v-if="port == 2">
+        <div class="item-footer-one">
+          <img src="../assets/icon/tripadvisor.png" alt="" />
+          <p>前往店评Prana璞纳养生酒店</p>
+        </div>
+        <div class="item-footer-two">
+          <input type="text" placeholder="请输入评论标题" />
+          <button>提交</button>
+        </div>
+
+        <div class="company">
+            <div class="company-logo">
+                <img src="../assets/icon/logo1.png" alt="" />
+            </div>
+            <div class="company-text">
+                <a href="">酒店和度假村</a>
+                <a href="">品牌故事</a>
+                <a href="">养生疗愈</a>
+                <a href="">酒店合作</a>
+                <a href="">登录</a>
+            </div>
+
+            <div class="conpany-local">
+                <img src="../assets/icon/address1.png" alt=""  width="23px" height="23px"/>
+                <div>璞纳养生酒店集团</div>
+            </div>
+            <div style="color:#fff;font-size:10px;">地址：上海市恒南路688弄31号&nbsp;&nbsp;&nbsp;电话：021-33882933</div>
+
+             <div class="conpany-local">
+                <img src="../assets/icon/address1.png" alt=""  width="23px" height="23px"/>
+                <div>舟山璞纳养生酒店</div>
+            </div>
+            <div style="color:#fff;font-size:10px;">地址：舟山市塘头村&nbsp;&nbsp;&nbsp;电话：021-33882933</div>
+
+             <p class="condition">
+              条款和条件Cookie政策&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;版权所有©2021安浙江益宏静方投资有限公司
+            </p>
+        </div>
+     
+    </div>
+</div>
+  
 </template>
 
 <script>
 export default {
-
-}
+  data() {
+    return {
+      // openLogPanel: false,
+      port: 1, //1 pc端  2 移动端
+    };
+  },
+  mounted() {
+    if (this._isMobile()) {
+      console.log("手机端");
+      this.port = 2;
+    } else {
+      console.log("pc端");
+      this.port = 1;
+    }
+  },
+  methods: {
+    _isMobile() {
+      let flag = navigator.userAgent.match(
+        /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+      );
+      return flag;
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
+    // 手机端样式开始
+    .condition{
+    font-size: 10px;
+    color: #fff;
+    margin-top: 20px;
+}
+.company-logo img{
+   width: 70px;
+}
+
+.conpany-local{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 6px;
+}
+
+.conpany-local div{
+    font-size: 10px;
+    color: #fff;
+    margin-left: 10px;
+    
+}
+
+.company-text{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.company-text a{
+    color: #ffffff;
+    font-size: 10px;
+}
+
+.company{
+    width: 100%;
+    background: #000;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.item-footer-one p{
+   font-size: 16px;
+   margin-top: 4px;
+}
+
+.item-footer-two{
+    width: 76%;
+   margin-top: 10px;
+}
+
+.item-footer-two button {
+  color: white;
+  width: 30%;
+  height: 43px;
+  background-color: #1c1c1c;
+  border: 1px solid #1c1c1c;
+}
+
+.item-footer-two input{
+    width: 70%;
+    height: 43px;
+    border: 1px solid #404040;
+    padding: 0 0 0 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.item-footer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+// 手机端样式结束
+
+
     .footer{
         margin-top: 68px;
         /* font-family:"黑体"; */
