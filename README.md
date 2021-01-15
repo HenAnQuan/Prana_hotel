@@ -1,4 +1,4 @@
-# prana_hotel
+# prana_group
 
 ## Project setup
 ```
