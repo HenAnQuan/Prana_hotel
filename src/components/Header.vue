@@ -452,6 +452,10 @@ a:hover {
   .nav {
     margin-right: 120px;
   }
+  .navItem {
+    padding-left: 30px;
+  }
+  .login {margin: 0 30px;}
 }
 @media screen and(max-width: 1024px) {
   .logo {

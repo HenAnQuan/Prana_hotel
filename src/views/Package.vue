@@ -179,11 +179,12 @@ export default {
 .project_text{
   flex:1;
   position: relative;
+  background-color: #eef2f3;
 }
 .project_text>div{
-  //  padding: 15px;
+   padding: 60px;
   box-sizing: border-box;
-  // width: 100%;
+  width: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
