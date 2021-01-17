@@ -28,7 +28,7 @@
               ></router-link>
             </li>
             <li>
-              <router-link to="/" class="navItem">
+              <router-link to="/overview" class="navItem">
                 <img
                   src="../assets/icon/overview2.png"
                   alt=""
@@ -38,7 +38,7 @@
               ></router-link>
             </li>
             <li>
-              <router-link to="/" class="navItem">
+              <router-link to="/installation" class="navItem">
                 <img
                   src="../assets/icon/installation2.png"
                   alt=""
@@ -48,7 +48,7 @@
               ></router-link>
             </li>
             <li>
-              <router-link to="/" class="navItem">
+              <router-link to="/package" class="navItem">
                 <img
                   src="../assets/icon/packge2.png"
                   alt=""
@@ -58,7 +58,7 @@
               ></router-link>
             </li>
             <li>
-              <router-link to="/" class="navItem">
+              <router-link to="/item" class="navItem">
                 <img
                   src="../assets/icon/item2.png"
                   alt=""
@@ -68,7 +68,7 @@
               ></router-link>
             </li>
             <li>
-              <router-link to="/" class="navItem">
+              <router-link to="/workshop" class="navItem">
                 <img
                   src="../assets/icon/workshop2.png"
                   alt=""
@@ -113,7 +113,7 @@
               ></router-link>
             </li>
             <li>
-              <router-link to="/" class="navItem">
+              <router-link to="/overview" class="navItem">
                 <img
                   src="../assets/icon/overview1.png"
                   alt=""
@@ -123,7 +123,7 @@
               ></router-link>
             </li>
             <li>
-              <router-link to="/" class="navItem">
+              <router-link to="/installation" class="navItem">
                 <img
                   src="../assets/icon/installation1.png"
                   alt=""
@@ -133,7 +133,7 @@
               ></router-link>
             </li>
             <li>
-              <router-link to="/" class="navItem">
+              <router-link to="/package" class="navItem">
                 <img
                   src="../assets/icon/packge1.png"
                   alt=""
@@ -143,7 +143,7 @@
               ></router-link>
             </li>
             <li>
-              <router-link to="/" class="navItem">
+              <router-link to="/item" class="navItem">
                 <img
                   src="../assets/icon/item1.png"
                   alt=""
@@ -153,7 +153,7 @@
               ></router-link>
             </li>
             <li>
-              <router-link to="/" class="navItem">
+              <router-link to="/workshop" class="navItem">
                 <img
                   src="../assets/icon/workshop1.png"
                   alt=""

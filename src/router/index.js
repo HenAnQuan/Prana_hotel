@@ -11,22 +11,29 @@ const routes = [
     component: Index
   },
   {
-    path: '/brandstory',
-    name: 'BrandStory',
-    component: () => import(/* webpackChunkName: "brandStory" */ '../views/BrandStory.vue')
+    path: '/overview',
+    name: 'Overview',
+    component: () => import(/* webpackChunkName: "brandStory" */ '../views/Overview.vue')
   },
   {
-    path: '/healthcare',
-    name: 'HealthCare',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "healthCare" */ '../views/HealthCare.vue')
+    path: '/installation',
+    name: 'Installation',
+    component: () => import(/* webpackChunkName: "brandStory" */ '../views/Installation.vue')
   },
   {
-    path: '/cooperation',
-    name: 'Cooperation',
-    component: () => import(/* webpackChunkName: "cooperation" */ '../views/Cooperation.vue')
+    path: '/package',
+    name: 'Package',
+    component: () => import(/* webpackChunkName: "brandStory" */ '../views/Package.vue')
+  },
+  {
+    path: '/item',
+    name: 'Item',
+    component: () => import(/* webpackChunkName: "brandStory" */ '../views/Item.vue')
+  },
+  {
+    path: '/workshop',
+    name: 'Workshop',
+    component: () => import(/* webpackChunkName: "brandStory" */ '../views/Workshop.vue')
   },
   {
     path: '/register',
