@@ -23,37 +23,57 @@
                   src="../assets/icon/hotel2.png"
                   alt=""
                   width="22px"
-                  height="22px" /><span>酒店和度假村</span>
+                  height="22px" /><span>首页</span>
                 <div></div
               ></router-link>
             </li>
             <li>
-              <router-link to="/brandstory" class="navItem">
+              <router-link to="/" class="navItem">
                 <img
-                  src="../assets/icon/brand2.png"
+                  src="../assets/icon/overview2.png"
                   alt=""
                   width="21px"
-                  height="21px" /><span>品牌故事</span>
+                  height="21px" /><span>酒店概览</span>
                 <div></div
               ></router-link>
             </li>
             <li>
-              <router-link to="/healthcare" class="navItem">
+              <router-link to="/" class="navItem">
                 <img
-                  src="../assets/icon/health2.png"
+                  src="../assets/icon/installation2.png"
                   alt=""
                   width="21px"
-                  height="21px" /><span>养生疗愈</span>
+                  height="21px" /><span>酒店设施</span>
                 <div></div
               ></router-link>
             </li>
             <li>
-              <router-link to="/cooperation" class="navItem">
+              <router-link to="/" class="navItem">
                 <img
-                  src="../assets/icon/cooperation2.png"
+                  src="../assets/icon/packge2.png"
                   alt=""
                   width="22px"
-                  height="22px" /><span>酒店合作</span>
+                  height="22px" /><span>养生套餐</span>
+                <div></div
+              ></router-link>
+            </li>
+            <li>
+              <router-link to="/" class="navItem">
+                <img
+                  src="../assets/icon/item2.png"
+                  alt=""
+                  width="22px"
+                  height="22px" /><span>养生项目</span>
+                <div></div
+              ></router-link>
+            </li>
+            <li>
+              <router-link to="/" class="navItem">
+                <img
+                  src="../assets/icon/workshop2.png"
+                  alt=""
+                  width="22px"
+                  height="22px" /><span>每日工坊</span>
                 <div></div
               ></router-link>
             </li>
@@ -88,37 +108,57 @@
                   src="../assets/icon/hotel1.png"
                   alt=""
                   width="22px"
-                  height="22px" /><span>酒店和度假村</span>
+                  height="22px" /><span>首页</span>
                 <div></div
               ></router-link>
             </li>
             <li>
-              <router-link to="/brandstory" class="navItem">
+              <router-link to="/" class="navItem">
                 <img
-                  src="../assets/icon/brand1.png"
+                  src="../assets/icon/overview1.png"
                   alt=""
                   width="21px"
-                  height="21px" /><span>品牌故事</span>
+                  height="21px" /><span>酒店概览</span>
                 <div></div
               ></router-link>
             </li>
             <li>
-              <router-link to="/healthcare" class="navItem">
+              <router-link to="/" class="navItem">
                 <img
-                  src="../assets/icon/health1.png"
+                  src="../assets/icon/installation1.png"
                   alt=""
                   width="21px"
-                  height="21px" /><span>养生疗愈</span>
+                  height="21px" /><span>酒店设施</span>
                 <div></div
               ></router-link>
             </li>
             <li>
-              <router-link to="/cooperation" class="navItem">
+              <router-link to="/" class="navItem">
                 <img
-                  src="../assets/icon/cooperation1.png"
+                  src="../assets/icon/packge1.png"
                   alt=""
                   width="22px"
-                  height="22px" /><span>酒店合作</span>
+                  height="22px" /><span>养生套餐</span>
+                <div></div
+              ></router-link>
+            </li>
+            <li>
+              <router-link to="/" class="navItem">
+                <img
+                  src="../assets/icon/item1.png"
+                  alt=""
+                  width="22px"
+                  height="22px" /><span>养生项目</span>
+                <div></div
+              ></router-link>
+            </li>
+            <li>
+              <router-link to="/" class="navItem">
+                <img
+                  src="../assets/icon/workshop1.png"
+                  alt=""
+                  width="22px"
+                  height="22px" /><span>每日工坊</span>
                 <div></div
               ></router-link>
             </li>

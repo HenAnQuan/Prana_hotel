@@ -18,15 +18,17 @@
           <!-- 右侧信息 -->
           <div class="info">
               <div class="nav">
-                  <a href="">酒店和度假村</a>
+                  <a href="">首页</a>
                   <span class="line"></span>
-                  <a href="">品牌故事</a>
+                  <a href="">酒店概览</a>
                   <span class="line"></span>
-                  <a href="">养生疗愈</a>
+                  <a href="">酒店设施</a>
                   <span class="line"></span>
-                  <a href="">酒店合作</a>
+                  <a href="">养生套餐</a>
                   <span class="line"></span>
-                  <a href="">登录</a>
+                  <a href="">养生项目</a>
+                  <span class="line"></span>
+                  <a href="">每日工坊</a>
                   <span class="line"></span>
               </div>
               <div class="address">

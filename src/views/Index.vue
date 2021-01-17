@@ -65,6 +65,13 @@
           <div class="swiper-button-prev" slot="button-prev"></div>
           <div class="swiper-button-next" slot="button-next"></div> -->
       </swiper>
+      <div class="hotel_link">
+        <a href="" :class="{'activated':carouselActiveIndex==0}">酒店概览</a>
+        <a href="" :class="{'activated':carouselActiveIndex==1}">酒店设施</a>
+        <a href="" :class="{'activated':carouselActiveIndex==2}">养生套餐</a>
+        <a href="" :class="{'activated':carouselActiveIndex==3}">每日工坊</a>
+        <a href="" :class="{'activated':carouselActiveIndex==4}">温泉和盐雾疗愈室</a>
+      </div>
     </div>
     <Footer />
   </div>
@@ -101,7 +108,7 @@ export default {
         "- 返璞归真的桃源秘境 - ",
         "- 身心灵的疗愈盛宴 -",
       ],
-      carouselActiveIndex: 1,
+      carouselActiveIndex: 0,
       banners2: [
         require("../assets/img/banner1-2-1.jpg"),
         require("../assets/img/banner1-2-2.jpg"),
@@ -177,9 +184,10 @@ export default {
             const realIndex = this.realIndex;   //从0开始的下标
             const activeIndex = this.activeIndex;   //从1开始的下标
             // console.log( realIndex);
-            that.carouselActiveIndex = activeIndex;
+            that.carouselActiveIndex = realIndex;
             // 把swiper对象传出去，当后续点击下方链接可以切换到对应的banner
-            console.log(this.el);
+            // console.log(this.el);
+            console.log(that.carouselActiveIndex);
             that.swiper2 =  this.el;
           },
         }
@@ -271,7 +279,7 @@ export default {
 }
 .explore_more {
   flex: 1;
-  border: 1px solid red;
+  // border: 1px solid red;
   position: relative;
   padding: 20px;
 }
@@ -304,18 +312,43 @@ export default {
   vertical-align: middle;
 }
 
+// 酒店链接
+.hotel_link{
+  padding: 60px 240px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+.hotel_link a{
+  color: #404040;
+  padding: 10px;
+  border: 1px solid #fff;
+  transition: border 1s linear ,color 1s linear ;
+}
+.hotel_link>.activated{
+  color: #1ca5ae;
+  border: 1px solid #1ca5ae;
+  // border: 1px solid #1ca5ae;
+}
+// 需要替换，加js效果，鼠标悬浮后，将轮播图取出的的当前播放的banner下标carouselActiveIndex存到一个新的临时变量，并且设为一个超出数量的值，使绑定.activated的条件都不成立，这样，带边框的a链接只有鼠标悬浮的那个；同时，轮播图暂停。鼠标移出a链接后，将临时变量的值重新赋给carouselActiveIndex并且继续轮播
+.hotel_link a:hover{
+  color: #1ca5ae;
+  border: 1px solid #1ca5ae;
+}
+
 @media screen and(max-width: 1440px) {
-  .welcome {
+  .welcome,.hotel_link {
     padding: 60px 120px;
   }
 }
 @media screen and(max-width: 1024px) {
-  .welcome {
+  .welcome,.hotel_link {
     padding: 60px 60px;
   }
 }
 @media screen and(max-width: 992px) {
-  .welcome {
+  .welcome,.hotel_link {
     padding: 60px 20px;
   }
 
