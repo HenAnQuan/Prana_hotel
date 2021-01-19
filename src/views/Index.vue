@@ -371,19 +371,19 @@ export default {
 
 @media screen and(max-width: 1440px) {
   .welcome,.hotel_link {
-    padding: px 120px;
+    padding: 30px 120px;
   }
   .explore_more > div {padding: 100px;}
 }
 @media screen and(max-width: 1024px) {
   .welcome,.hotel_link {
-    padding: px 60px;
+    padding: 30px 60px;
   }
   .explore_more > div {padding: 70px;}
 }
 @media screen and(max-width: 992px) {
   .welcome,.hotel_link {
-    padding: px 40px;
+    padding: 30px 40px;
   }
   .explore_more > div {padding: 40px;}
 

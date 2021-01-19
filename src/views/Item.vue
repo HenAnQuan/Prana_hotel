@@ -75,10 +75,10 @@ export default {
           el: ".swiper-pagination",
         },
         loop: true,
-        autoplay: {
-          delay: 4000,
-          disableOnInteraction: false,
-        },
+        // autoplay: {
+        //   delay: 4000,
+        //   disableOnInteraction: false,
+        // },
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",

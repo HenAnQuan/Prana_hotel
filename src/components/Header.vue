@@ -85,7 +85,7 @@
                 height="16px"
               /><span>登陆</span>
             </li>
-            <li class="language"><span>中文</span></li>
+            <!-- <li class="language"><span>中文</span></li> -->
           </ul>
         </div>
       </div>
@@ -170,7 +170,7 @@
                 height="16px"
               /><span>登陆</span>
             </li>
-            <li class="language"><span>中文</span></li>
+            <!-- <li class="language"><span>中文</span></li> -->
           </ul>
         </div>
       </div>
@@ -390,7 +390,7 @@ a:hover {
   margin-top: 16px;
   // margin-right: 240px;
   font-size: 12px;  
-  margin-right: 60px;
+  margin-right: 30px;
 }
 .navItem {
   display: flex;
