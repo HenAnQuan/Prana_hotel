@@ -10,8 +10,8 @@
             ><img
               src="../assets/icon/logo2.png"
               alt=""
-              width="80px"
-              height="48px"
+              width="70px"
+              height="42px"
           /></router-link>
         </div>
         <div class="nav">
@@ -22,8 +22,8 @@
                 <img
                   src="../assets/icon/hotel2.png"
                   alt=""
-                  width="22px"
-                  height="22px" /><span>首页</span>
+                  width="18px"
+                  height="18px" /><span>首页</span>
                 <div></div
               ></router-link>
             </li>
@@ -32,8 +32,8 @@
                 <img
                   src="../assets/icon/overview2.png"
                   alt=""
-                  width="21px"
-                  height="21px" /><span>酒店概览</span>
+                  width="17.5px"
+                  height="17.5px" /><span>酒店概览</span>
                 <div></div
               ></router-link>
             </li>
@@ -42,8 +42,8 @@
                 <img
                   src="../assets/icon/installation2.png"
                   alt=""
-                  width="21px"
-                  height="21px" /><span>酒店设施</span>
+                  width="16px"
+                  height="15px" /><span>酒店设施</span>
                 <div></div
               ></router-link>
             </li>
@@ -52,8 +52,8 @@
                 <img
                   src="../assets/icon/packge2.png"
                   alt=""
-                  width="22px"
-                  height="22px" /><span>养生套餐</span>
+                  width="16px"
+                  height="16px" /><span>养生套餐</span>
                 <div></div
               ></router-link>
             </li>
@@ -62,8 +62,8 @@
                 <img
                   src="../assets/icon/item2.png"
                   alt=""
-                  width="22px"
-                  height="22px" /><span>养生项目</span>
+                  width="16px"
+                  height="16px" /><span>养生项目</span>
                 <div></div
               ></router-link>
             </li>
@@ -72,8 +72,8 @@
                 <img
                   src="../assets/icon/workshop2.png"
                   alt=""
-                  width="22px"
-                  height="22px" /><span>每日工坊</span>
+                  width="17.5px"
+                  height="17.5px" /><span>每日工坊</span>
                 <div></div
               ></router-link>
             </li>
@@ -81,8 +81,8 @@
               <img
                 src="../assets/icon/login2.png"
                 alt=""
-                width="22px"
-                height="22px"
+                width="16px"
+                height="16px"
               /><span>登陆</span>
             </li>
             <li class="language"><span>中文</span></li>
@@ -96,8 +96,8 @@
             ><img
               src="../assets/icon/logo1.png"
               alt=""
-              width="80px"
-              height="48px"
+              width="70px"
+              height="42px"
           /></router-link>
         </div>
         <div class="nav">
@@ -107,8 +107,8 @@
                 ><img
                   src="../assets/icon/hotel1.png"
                   alt=""
-                  width="22px"
-                  height="22px" /><span>首页</span>
+                  width="18px"
+                  height="18x" /><span>首页</span>
                 <div></div
               ></router-link>
             </li>
@@ -117,8 +117,8 @@
                 <img
                   src="../assets/icon/overview1.png"
                   alt=""
-                  width="21px"
-                  height="21px" /><span>酒店概览</span>
+                  width="17.5px"
+                  height="17.5px" /><span>酒店概览</span>
                 <div></div
               ></router-link>
             </li>
@@ -127,8 +127,8 @@
                 <img
                   src="../assets/icon/installation1.png"
                   alt=""
-                  width="21px"
-                  height="21px" /><span>酒店设施</span>
+                  width="16px"
+                  height="15px" /><span>酒店设施</span>
                 <div></div
               ></router-link>
             </li>
@@ -137,8 +137,8 @@
                 <img
                   src="../assets/icon/packge1.png"
                   alt=""
-                  width="22px"
-                  height="22px" /><span>养生套餐</span>
+                  width="16px"
+                  height="16px" /><span>养生套餐</span>
                 <div></div
               ></router-link>
             </li>
@@ -147,8 +147,8 @@
                 <img
                   src="../assets/icon/item1.png"
                   alt=""
-                  width="22px"
-                  height="22px" /><span>养生项目</span>
+                  width="16px"
+                  height="16px" /><span>养生项目</span>
                 <div></div
               ></router-link>
             </li>
@@ -157,8 +157,8 @@
                 <img
                   src="../assets/icon/workshop1.png"
                   alt=""
-                  width="22px"
-                  height="22px" /><span>每日工坊</span>
+                  width="17.5px"
+                  height="17.5px" /><span>每日工坊</span>
                 <div></div
               ></router-link>
             </li>
@@ -166,8 +166,8 @@
               <img
                 src="../assets/icon/login1.png"
                 alt=""
-                width="22px"
-                height="22px"
+                width="16px"
+                height="16px"
               /><span>登陆</span>
             </li>
             <li class="language"><span>中文</span></li>
@@ -322,7 +322,7 @@ export default {
 
 a:focus,
 a:hover {
-  color: #23527c;
+  color: rgb(0,65, 56);
   text-decoration: underline;
 }
 .header {
@@ -354,7 +354,8 @@ a:hover {
   width: 100%;
   background-image: linear-gradient(
     to bottom,
-    rgba(28, 28, 28, 0.5),
+    rgba(28, 28, 28, 0.9),
+    rgba(28, 28, 28, 0.6) 60%,
     rgba(28, 28, 28, 0)
   );
   justify-content: space-between;
@@ -381,25 +382,27 @@ a:hover {
 
 
 .logo {
-  margin-left: 240px;
+  // margin-left: 240px;
+  margin-left: 40px;
   margin-top: 16px;
 }
 .nav {
   margin-top: 16px;
-  margin-right: 240px;
-  font-size: 12px;
+  // margin-right: 240px;
+  font-size: 12px;  
+  margin-right: 60px;
 }
 .navItem {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-left: 53px;
+  padding-left: 50px;
 }
 .navItem:hover {
   text-decoration: none;
 }
 .navItem span {
-  margin-top: 3px;
+  margin-top: 4px;
 }
 .navItem div {
   margin-top: 6px;
@@ -425,13 +428,15 @@ a:hover {
   align-items: flex-end;
 }
 .login {
-  width: 111px;
-  height: 46px;
+  // width: 111px;
+  width: 90px;
+  // height: 46px;
+  height: 34px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid white;
-  margin: 0 53px;
+  margin: 0 30px 7px 25px;
 }
 .header2 .login {
   border: 1px solid #404040;
@@ -446,40 +451,40 @@ a:hover {
 }
 
 @media screen and(max-width: 1440px) {
-  .logo {
-    margin-left: 120px;
-  }
-  .nav {
-    margin-right: 120px;
-  }
+  // .logo {
+  //   margin-left: 120px;
+  // }
+  // .nav {
+  //   margin-right: 120px;
+  // }
   .navItem {
     padding-left: 30px;
   }
-  .login {margin: 0 30px;}
+  // .login {margin: 0 30px 7px 30px;}
 }
 @media screen and(max-width: 1024px) {
-  .logo {
-    margin-left: 60px;
-  }
-  .nav {
-    margin-right: 60px;
-  }
+  // .logo {
+  //   margin-left: 60px;
+  // }
+  // .nav {
+  //   margin-right: 60px;
+  // }
 }
 @media screen and(max-width: 992px) {
-  .logo {
-    margin-left: 20px;
-  }
-  .nav {
-    margin-right: 20px;
-  }
+  // .logo {
+  //   margin-left: 20px;
+  // }
+  // .nav {
+  //   margin-right: 20px;
+  // }
 }
 @media screen and(max-width: 810px) {
   .navItem {
     padding-left: 30px;
   }
-  .login {
-    margin: 0 30px;
-  }
+  // .login {
+  //   margin: 0 30px;
+  // }
 }
 @media screen and(max-width: 660px) {
 }

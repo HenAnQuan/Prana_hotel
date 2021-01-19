@@ -67,9 +67,7 @@ export default {
   },
   methods: {
     intoSecondscreen() {
-      window.scrollY >= 100
-        ? (this.movetoFirstSecond = true)
-        : (this.movetoFirstSecond = false);
+      window.scrollY >= document.documentElement.clientHeight-80 ? this.movetoFirstSecond = true : this.movetoFirstSecond = false;
     },
   },
   created() {
@@ -87,7 +85,7 @@ export default {
 .main-info {
   box-sizing: border-box;
   margin: 50px atuo;
-  padding: 0 240px;
+  padding: 0 180px;
   width: 100%;
 }
 .text1{
@@ -116,7 +114,7 @@ export default {
   text-align: justify;
   }
 .preview-bd{
-  border: 2px solid #404040;
+  border: 1px solid rgb(0,65,56);
   padding: 12px;
 }
 

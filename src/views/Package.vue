@@ -11,11 +11,17 @@
       <!-- 主要信息 -->
       <div class="health_package">
         <div class="course" v-if="courses.length > 0">
-          <div
+          <!-- <div
             class="courseItem"
             :class="activated"
-            @mouseenter="updateHoverState(true)"
-            @mouseleave="updataHoverState(false)"
+            @mouseenter="updateHoverState(true,index)"
+            @mouseleave="updataHoverState(false,index)"
+            v-for="(item, index) in courses"
+            :key="index"
+          > -->
+          <div
+            class="courseItem"
+            :class="{activated:activeIndex==index}" @click="updateHoverState(true,index)"
             v-for="(item, index) in courses"
             :key="index"
           >
@@ -70,7 +76,6 @@ export default {
   data() {
     return {
       movetoFirstSecond: false,
-      isHover: false,
       HeathIndex: 0,
       courses: [
         { img: require("../assets/icon/spa2.png"), title: "排毒清体系列疗程" },
@@ -96,18 +101,19 @@ export default {
           {title:"6天5晚基础排毒套餐",
           content:"5晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>淋巴排毒理疗（60分钟）<br>气内脏腹部排毒按摩（60分钟）<br>阿育吠陀双人四手按摩（60分钟）<br>行星颂钵理疗（60分钟）<br>热石理疗（60分钟）<br>阿育吠陀鼻腔净化（60分钟）<br>绿茶肌肤排毒裹肤护理 （60分钟）<br>茶粉磨砂去角质护理（60分钟）<br>中医拔罐（60分钟）<br>中医推拿（60分钟）<br>呼吸训练私教练习（60分钟）<br>瑜伽私教练习（60分钟）<br>有氧排毒训练私教练习（60分钟）<br>免费参加每日工坊课程活动",img:require("../assets/img/package1-3.jpg"),sign:"净化身体 疗愈身心<br>感受由内而外的纯净"}
           ]
-      ]
+      ],
+      hoverState: false,
+      activeIndex:10,
     };
   },
   mounted() {},
   methods: {
     intoSecondscreen() {
-      window.scrollY >= 100
-        ? (this.movetoFirstSecond = true)
-        : (this.movetoFirstSecond = false);
+      window.scrollY >= document.documentElement.clientHeight-80 ? this.movetoFirstSecond = true : this.movetoFirstSecond = false;
     },
-    updateHOverState(isHover) {
+    updateHoverState(isHover,index) {
       this.hoverState = isHover;
+      this.activeIndex = index;
     },
   },
   computed:{
@@ -118,10 +124,10 @@ export default {
           el: ".swiper-pagination",
         },
         loop: true,
-        autoplay: {
-          delay: 4000,
-          disableOnInteraction: false,
-        },
+        // autoplay: {
+        //   delay: 4000,
+        //   disableOnInteraction: false,
+        // },
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
@@ -172,6 +178,7 @@ export default {
 }
 .course p {
   font-size: 16px;
+  color: rgb(0,65,56);
 }
 .project{
   display: flex;
@@ -179,7 +186,7 @@ export default {
 .project_text{
   flex:1;
   position: relative;
-  background-color: #eef2f3;
+  background-color: white;
 }
 .project_text>div{
    padding: 60px;
@@ -211,7 +218,11 @@ export default {
   color:white;
 }
 
-
+.activated{
+  background: #1c1c1c;
+  color: white;
+}
+.activated p{color: white;}
 
 
 @media screen and(max-width: 1440px) {

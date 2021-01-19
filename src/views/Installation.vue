@@ -58,9 +58,7 @@ export default {
   },
   methods: {
     intoSecondscreen() {
-      window.scrollY >= 100
-        ? (this.movetoFirstSecond = true)
-        : (this.movetoFirstSecond = false);
+      window.scrollY >= document.documentElement.clientHeight-80 ? this.movetoFirstSecond = true : this.movetoFirstSecond = false;
     },
   },
   created() {
@@ -76,7 +74,7 @@ export default {
 
 <style lang="scss" scoped>
 .main-info  {
-    padding: 0 240px;
+    padding: 0 180px;
   }
 .item{
   display: flex;
@@ -103,6 +101,7 @@ export default {
 }
 .item_text .item_title{
   font-size: 16px;
+  color: rgb(0,65,56);
   margin-bottom: 20px;
 }
 .item_content{

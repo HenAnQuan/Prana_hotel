@@ -17,8 +17,8 @@
         </swiper>
       </div>
 
-      <!-- 酒店预订 -->
-      <BookingHotel />
+      <!-- 酒店预订，等开业后再放上去 -->
+      <!-- <BookingHotel /> -->
 
       <!-- 欢迎光临 -->
       <div class="welcome">
@@ -30,11 +30,11 @@
           <div class="wel_textInfo">
             <p>
               舟山璞纳养生酒店为追求身心健康的旅行者带来独一无二的假期体验：<br />在享受悠然时光的同时，提升健康状况，并获得持续平衡的生活方式。
-              “走遍千山万水，也不过是为了找到一条走回自己内心的路。”<br />舟山璞纳养生酒店，正是这条道路上的教育、哺育和传播能量的圣地。
+              “走遍千山万水，也不过是为了找到一条走回自己内心的路。”舟山璞纳养生酒店，正是这条道路上的教育、哺育和传播能量的圣地。
             </p>
           </div>
         </div>
-        <div class="welLine"></div>
+        <!-- <div class="welLine"></div> -->
       </div>
 
       <!-- 酒店链接轮播图 -->
@@ -46,7 +46,7 @@
                 <p>{{ hotelInstr[index] }}</p>
                 <div class="more">
                   <div>
-                    探索更多<img
+                    更多<img
                       src="../assets/icon/more.png"
                       alt=""
                       width="14px"
@@ -66,14 +66,14 @@
           <div class="swiper-button-next" slot="button-next"></div> -->
       </swiper>
       <div class="hotel_link">
-        <a href="" :class="{'activated':carouselActiveIndex==0}">酒店概览</a>
-        <a href="" :class="{'activated':carouselActiveIndex==1}">酒店设施</a>
-        <a href="" :class="{'activated':carouselActiveIndex==2}">养生套餐</a>
-        <a href="" :class="{'activated':carouselActiveIndex==3}">每日工坊</a>
-        <a href="" :class="{'activated':carouselActiveIndex==4}">温泉和盐雾疗愈室</a>
+        <a href="" :class="{'activated':carouselActiveIndex==0}" @mouseenter="updateHoverState(true,0)" @mouseleave="updateHoverState(false,0)">酒店概览</a>
+        <a href="" :class="{'activated':carouselActiveIndex==1}" @mouseenter="updateHoverState(true,1)" @mouseleave="updateHoverState(false,1)">酒店设施</a>
+        <a href="" :class="{'activated':carouselActiveIndex==2}" @mouseenter="updateHoverState(true,2)" @mouseleave="updateHoverState(false,2)">养生套餐</a>
+        <a href="" :class="{'activated':carouselActiveIndex==3}" @mouseenter="updateHoverState(true,3)" @mouseleave="updateHoverState(false,3)">每日工坊</a>
+        <a href="" :class="{'activated':carouselActiveIndex==4}" @mouseenter="updateHoverState(true,4)" @mouseleave="updateHoverState(false,4)">温泉和盐雾疗愈室</a>
       </div>
     </div>
-    <Footer />
+    <Footer/>
   </div>
 </template>
 
@@ -89,7 +89,7 @@ export default {
   components: {
     Header,
     Footer,
-    BookingHotel,
+    // BookingHotel,
     Login,
   },
   data() {
@@ -170,14 +170,21 @@ export default {
           el: ".swiper-pagination",
         },
         loop: true,
-        autoplay: {
-          delay: 4000,
-          disableOnInteraction: false,
-        },
+        // autoplay: {
+        //   delay: 6000,
+        //   disableOnInteraction: false,
+        // },
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         },
+        speed:1500,
+        // delay:2000,
+        // effect : 'flip',
+        // flip: {
+        //     slideShadows : true,
+        //     limitRotation : true,
+        // },
         on: {
           slideChange: function () {
             // 当swiper进行轮播的时候,将当前展示的banenr的下标传到data中
@@ -187,8 +194,9 @@ export default {
             that.carouselActiveIndex = realIndex;
             // 把swiper对象传出去，当后续点击下方链接可以切换到对应的banner
             // console.log(this.el);
-            console.log(that.carouselActiveIndex);
-            that.swiper2 =  this.el;
+            console.log(that.carouselActiveIndex,'现在轮播图下标');
+            // console.log(this);
+            that.swiper2 =  this;
           },
         }
       };
@@ -215,11 +223,29 @@ export default {
     intoSecondscreen() {
       // console.log(document.body.clientHeight,window.screen.height,document.documentElement.clientHeight);        //用于获取 文档高度 , 屏幕高度 ,   浏览器可视区域高度
       // console.log(window.scrollY);      //获取滚轮滚动的高度。初始为0，向下滚动增加，向上滚动数值减小；同时当滚动到文档最下方时，得到的最大值与浏览器可视区域高度相加等于文档高度
-      // window.scrollY >= document.documentElement.clientHeight-120 ? this.movetoFirstSecond = true : this.movetoFirstSecond = false;
+      window.scrollY >= document.documentElement.clientHeight-80 ? this.movetoFirstSecond = true : this.movetoFirstSecond = false;
       // 更换触发header导航样式替换的条件
-      window.scrollY >= 100
-        ? (this.movetoFirstSecond = true)
-        : (this.movetoFirstSecond = false);
+      // window.scrollY >= 100
+      //   ? (this.movetoFirstSecond = true)
+      //   : (this.movetoFirstSecond = false);
+    },
+    updateHoverState(isHover,index){
+      if(isHover==true){
+        console.log(index,'链接下标');
+        this.swiper2.slideTo(index+1, 1500);
+        let delayTime = setTimeout(()=>{
+          this.carouselActiveIndex = index;
+        },0);
+        clearTimeout(delayTime);
+        this.swiper2.autoplay.stop();
+      }else if(isHover==false){
+        // this.HoverState = isHover;
+        this.swiper2.slideTo(index+1, 1500);
+        this.carouselActiveIndex = index;
+        // this.swiper2.startAutoplay();
+        this.swiper2.autoplay.start();
+      }
+      
     },
   },
   created() {
@@ -248,7 +274,7 @@ export default {
   transform: translate(-50%, -50%);
 }
 .welcome {
-  padding: 80px 240px;
+  padding: 80px 180px;
 }
 .welText {
   display: flex;
@@ -260,6 +286,8 @@ export default {
 }
 .welcome h3 {
   font-size: 16px;
+  font-weight: bold;
+  color: rgb(0,65,56);
   white-space: nowrap;
 }
 .wel_textInfo {
@@ -267,6 +295,7 @@ export default {
 }
 .wel_textInfo p {
   line-height: 28px;
+  text-align: justify;
 }
 .welLine {
   border-bottom: 1px solid #839c98;
@@ -285,6 +314,9 @@ export default {
 }
 .explore_more > div {
   position: absolute;
+  padding: 100px;
+  width: 100%;
+  box-sizing: border-box;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -296,11 +328,11 @@ export default {
 .more > div {
   display: flex;
   justify-content: space-between;
-  width: 80px;
+  width: 52px;
   padding: 10px;
   border-top: 1px solid #404040;
   border-bottom: 1px solid #404040;
-  margin: 60px auto 0 auto;
+  margin: 40px auto 0 auto;
 }
 .more img {
   vertical-align: middle;
@@ -314,7 +346,7 @@ export default {
 
 // 酒店链接
 .hotel_link{
-  padding: 60px 240px;
+  padding: 30px 180px ;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -339,18 +371,21 @@ export default {
 
 @media screen and(max-width: 1440px) {
   .welcome,.hotel_link {
-    padding: 60px 120px;
+    padding: px 120px;
   }
+  .explore_more > div {padding: 100px;}
 }
 @media screen and(max-width: 1024px) {
   .welcome,.hotel_link {
-    padding: 60px 60px;
+    padding: px 60px;
   }
+  .explore_more > div {padding: 70px;}
 }
 @media screen and(max-width: 992px) {
   .welcome,.hotel_link {
-    padding: 60px 20px;
+    padding: px 40px;
   }
+  .explore_more > div {padding: 40px;}
 
   .wel_textInfo {
     margin-left: 40px;

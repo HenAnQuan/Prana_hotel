@@ -90,9 +90,7 @@ export default {
   },
   methods: {
     intoSecondscreen() {
-      window.scrollY >= 100
-        ? (this.movetoFirstSecond = true)
-        : (this.movetoFirstSecond = false);
+      window.scrollY >= document.documentElement.clientHeight-80 ? this.movetoFirstSecond = true : this.movetoFirstSecond = false;
     },
   },
   created() {
@@ -128,9 +126,9 @@ export default {
 .screen_text{position: absolute;bottom: 30px;padding: 20px;text-align:center;width: 100%;box-sizing: border-box;}
 .screen_text p{color: white;line-height: 20px;text-align:center;}
 
-.main-info{padding: 0 240px}
+.main-info{padding: 0 180px}
 .picture{margin: 50px 0 30px 0;}
-.picture_instr p{line-height: 20px;margin-top: 20px;}
+.picture_instr p{line-height: 28px;margin-top: 20px;}
 
 .specialHealthItem{
   width: 100%;
@@ -138,14 +136,16 @@ export default {
   margin: 60px auto 30px auto;
 }
 .specialHealthItem span{
+  font-size: 16px;
   padding: 10px 20px;
-  border: 1px solid #404040;
+  border: 1px solid rgb(0,65,56);
+  color: rgb(0,65,56);
 }
 
 .special_items{display:flex}
 .special_item>div{position:relative;}
 .item_title{
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0,65,56,0.5);
   position:absolute;
   bottom: 0;
   left: 0;
@@ -154,6 +154,7 @@ export default {
   padding: 10px 0;
 }
 .item_title{text-align: center;}
+.item_img img{vertical-align: middle;}
 .special_item>p{margin-top: 10px;text-align: center;line-height: 20px;}
 
 @media screen and(max-width: 1440px) {

@@ -25,21 +25,6 @@
             <td v-for="(course,index2) in item" :key="index2">{{course}}</td>
           </tr>
       </table>
-      <!-- <div class="tr">
-        <div class="td">时间</div>
-        <div class="td">周一 Mon</div>
-        <div class="td">周二 Tue</div>
-        <div class="td">周三 Wed</div>
-        <div class="td">周四 Thur</div>
-        <div class="td">周五 Fri</div>
-        <div class="td">周六 Sat</div>
-        <div class="td">周日 Sun</div>
-      </div>
-      <div class="tr" v-for="(item,index) in courses" :key="index">
-        <div class="td" v-for="(course,index2) in item" :key="index2">
-          <div>{{course}}</div>
-        </div>
-      </div> -->
     </div>
     <Footer/>
   </div>
@@ -86,7 +71,7 @@ export default {
 
 <style lang="scss" scoped>
 .firstScreen{margin-bottom: 50px;}
-.main-info{font-size: 14px;}
+.main-info{font-size: 14px;padding: 0 240px;}
 table{text-align: center;border-collapse:collapse;width: 100%;}
 tr{height: 45px;}
 th,td{border: 1px solid #404040;vertical-align: middle;}

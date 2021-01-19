@@ -29,14 +29,13 @@
                   <a href="">养生项目</a>
                   <span class="line"></span>
                   <a href="">每日工坊</a>
-                  <span class="line"></span>
               </div>
               <div class="address">
-                  <div class="address1"><img src="../assets/icon/address1.png" alt="" width="18px" height="18px"><span>璞纳养生酒店集团&nbsp;&nbsp;&nbsp;地址：上海市恒南路688弄31号&nbsp;&nbsp;&nbsp;电话：021-33882933</span> </div>
-                  <div class="address2"><img src="../assets/icon/address1.png" alt="" width="18px" height="18px"><span>舟山璞纳养生酒店&nbsp;&nbsp;&nbsp;地址：舟山市塘头村&nbsp;&nbsp;&nbsp;电话：021-33882933</span> </div>
+                  <div class="address1"><img src="../assets/icon/address1.png" alt="" width="14px" height="14px"><span>璞纳养生酒店集团&nbsp;&nbsp;&nbsp;地址：上海市恒南路688弄31号&nbsp;&nbsp;&nbsp;电话：021-33882933</span> </div>
+                  <div class="address2"><img src="../assets/icon/address1.png" alt="" width="14px" height="14px"><span>舟山璞纳养生酒店&nbsp;&nbsp;&nbsp;地址：舟山市塘头村&nbsp;&nbsp;&nbsp;电话：021-33882933</span> </div>
               </div>
               <div class="copy">
-                  <p>条款和条件Cookie政策&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;版权所有©2021安浙江益宏静方投资有限公司</p>
+                  <p>条款和条件Cookie政策&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;版权所有©2021安浙江益宏静方投资有限公司<br>【免责声明】部分图片来源于网络，仅为示意，如有侵权，请联系删除</p>
               </div>
           </div>
       </div>
@@ -253,7 +252,7 @@ export default {
     height: 225px;
     background-color: #1c1c1c;
     color: white;
-    padding: 0 240px;
+    padding: 0 40px;
     display: flex;
     align-items: center;
     // justify-content: space-between;
@@ -262,7 +261,8 @@ export default {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    // align-items: flex-end;
+    align-items: center;
     color: white;
     font-size: 12px;
 }
@@ -287,7 +287,7 @@ export default {
     margin: 0 0 0 41px;
 }
 .info>.address{
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
 }
@@ -304,6 +304,11 @@ export default {
 .info .address2{
     margin-left: 40px;
 }
+.info .copy{
+    line-height: 28px;
+    text-align: center;
+}
+
 
 
 
@@ -311,15 +316,15 @@ export default {
 @media screen and(max-width: 1440px) {
   .tripadvisor{padding: 0 120px;}
   .submit>input{width: 100%;} 
-  .copyright{padding: 0 120px;}
+//   .copyright{padding: 0 120px;}
 }
 @media screen and(max-width: 1024px) {
   .tripadvisor{padding: 0 60px;}
-  .copyright{padding: 0 60px;}
+//   .copyright{padding: 0 60px;}
 }
 @media screen and(max-width: 992px) {
   .tripadvisor{padding: 0 20px;}
-  .copyright{padding: 0 20px;}
+//   .copyright{padding: 0 20px;}
 }
 
 @media screen and(max-width: 1170px) {

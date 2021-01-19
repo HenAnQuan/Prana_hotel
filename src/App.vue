@@ -4,7 +4,9 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div> -->
-    <router-view/>
+    <transition name="fade-transform" mode="out-in">
+      <router-view/>
+    </transition>
   </div>
 </template>
 
@@ -12,24 +14,28 @@
 @import url(./assets/css/reset.css);
 @import url(./assets/css/global.css);
 
-// #app {
-//   font-family: Avenir, Helvetica, Arial, sans-serif;
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-//   text-align: center;
-//   color: #2c3e50;
-// }
+/* 
+enter-active 定义进入过渡的结束状态
+leave-active 定义离开过渡的结束状态
+ */
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all 0.5s;
+}
 
-// #nav {
-//   padding: 30px;
+/* 
+enter定义进入过渡的开始状态
+ */
+.fade-transform-enter {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+/* 
+leave-to离场动画结束后的状态
+ */
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
 
-//   a {
-//     font-weight: bold;
-//     color: #2c3e50;
-
-//     &.router-link-exact-active {
-//       color: #42b983;
-//     }
-//   }
-// }
 </style>
