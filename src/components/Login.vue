@@ -44,6 +44,7 @@ export default {
     .login{
         display: none;
         position: fixed;
+        z-index: 99999;
         right: 40px;
         // top: 251px;
         top: 50%;

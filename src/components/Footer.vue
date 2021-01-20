@@ -29,10 +29,12 @@
                   <a href="">养生项目</a>
                   <span class="line"></span>
                   <a href="">每日工坊</a>
+                  <span class="line"></span>
+                  <a href="http://www.ehome-vip.com">益宏集团</a>
               </div>
               <div class="address">
                   <div class="address1"><img src="../assets/icon/address1.png" alt="" width="14px" height="14px"><span>璞纳养生酒店集团&nbsp;&nbsp;&nbsp;地址：上海市恒南路688弄31号&nbsp;&nbsp;&nbsp;电话：021-33882933</span> </div>
-                  <div class="address2"><img src="../assets/icon/address1.png" alt="" width="14px" height="14px"><span>舟山璞纳养生酒店&nbsp;&nbsp;&nbsp;地址：舟山市塘头村&nbsp;&nbsp;&nbsp;电话：021-33882933</span> </div>
+                  <div class="address2"><img src="../assets/icon/address1.png" alt="" width="14px" height="14px"><span>舟山璞纳养生酒店&nbsp;&nbsp;&nbsp;地址：舟山普陀塘头村&nbsp;&nbsp;&nbsp;电话：021-33882933</span> </div>
               </div>
               <div class="copy">
                   <p>条款和条件Cookie政策&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;版权所有©2021安浙江益宏静方投资有限公司<br>【免责声明】部分图片来源于网络，仅为示意，如有侵权，请联系删除</p>
@@ -60,7 +62,7 @@
                 <a href="">品牌故事</a>
                 <a href="">养生疗愈</a>
                 <a href="">酒店合作</a>
-                <a href="">登录</a>
+                <a href="http://www.ehome-vip.com">益宏集团</a>
             </div>
 
             <div class="conpany-local">
@@ -73,7 +75,7 @@
                 <img src="../assets/icon/address1.png" alt=""  width="23px" height="23px"/>
                 <div>舟山璞纳养生酒店</div>
             </div>
-            <div style="color:#fff;font-size:10px;">地址：舟山市塘头村&nbsp;&nbsp;&nbsp;电话：021-33882933</div>
+            <div style="color:#fff;font-size:10px;">地址：舟山普陀塘头村&nbsp;电话：021-33882933</div>
 
              <p class="condition">
               条款和条件Cookie政策&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;版权所有©2021安浙江益宏静方投资有限公司
