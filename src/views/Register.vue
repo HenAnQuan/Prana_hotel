@@ -5,7 +5,7 @@
           <div class="register">
               <div class="register-info">
                   <h2 class="title1">欢迎来到璞纳酒店</h2>
-                  <img class="icon" src="../assets/icon/logo2.png" alt="" width="80px" height="48px"/>
+                  <img class="icon" src="../assets/icon/logo2.png" alt="">
                   <h2 class="title2">注册会员</h2>
                   <div><input type="text" placeholder="请输入手机号"></div>
                   <div class="code"><input type="text" placeholder="请输入验证码"><button>发送验证码</button> </div>
@@ -61,8 +61,7 @@ export default {
     }
     .startInput{
         height: 690px;
-        // width: 1920px;
-        width: 100%;
+        width: 1960px;
         background:#eef2f3;
         padding:135px 0;
     }
@@ -85,7 +84,7 @@ export default {
         justify-content: flex-start;
     }
     .register-info>h2{
-        font-size: 18px;
+        font-size: 24px;
     }
     .register-info>.title1{
         margin-bottom: 47px;

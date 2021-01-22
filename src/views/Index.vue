@@ -11,7 +11,7 @@
               <div class="title">
                 <p>{{ title[index] }}</p>
               </div>
-              <img :src="item" alt="" />
+              <img :src="item" alt="" class="banner-port"/>
             </div>
           </swiper-slide>
         </swiper>
@@ -21,7 +21,7 @@
       <!-- <BookingHotel /> -->
 
       <!-- 欢迎光临 -->
-      <div class="welcome">
+      <div class="welcome"  v-if="port == 1">
         <div class="welText">
           <div class="wel_title">
             <h2>欢迎光临</h2>
@@ -37,27 +37,42 @@
         <!-- <div class="welLine"></div> -->
       </div>
 
+       <div class="welcome-port"  v-if="port == 2">
+            <p>欢迎光临</p>
+            <h3>舟山璞纳养生酒店</h3>
+            <p>
+              舟山璞纳养生酒店为追求身心健康的旅行者带来独一无二的假期体验：在享受悠然时光的同时，提升健康状况，并获得持续平衡的生活方式。
+              “走遍千山万水，也不过是为了找到一条走回自己内心的路。”舟山璞纳养生酒店，正是这条道路上的教育、哺育和传播能量的圣地。
+            </p>
+      </div>
+
       <!-- 酒店链接轮播图 -->
       <swiper ref="mySwiper" :options="swiperOption_">
         <swiper-slide v-for="(item, index) in banners2" :key="index">
           <div class="carousel_board">
-            <div class="explore_more">
+            <div class="explore_more" v-if="port == 1">
               <div>
                 <p>{{ hotelInstr[index] }}</p>
-                <div class="more">
-                  <div>
-                    更多<img
-                      src="../assets/icon/more.png"
-                      alt=""
-                      width="14px"
-                      height="14px"
-                    />
-                  </div>
+                <div class="more" v-if="index==0">
+                  <router-link to="/overview">更多<img src="../assets/icon/more.png" alt="" width="14px" height="14px"/></router-link>
+                </div>
+                <div class="more" v-if="index==1">
+                  <router-link to="/installation">更多<img src="../assets/icon/more.png" alt="" width="14px" height="14px"/></router-link>
+                </div>
+                <div class="more" v-if="index==2">
+                  <router-link to="/package">更多<img src="../assets/icon/more.png" alt="" width="14px" height="14px"/></router-link>
+                </div>
+                <div class="more" v-if="index==3">
+                  <router-link to="/workshop">更多<img src="../assets/icon/more.png" alt="" width="14px" height="14px"/></router-link>
+                </div>
+                <div class="more" v-else>
+                  <!-- 当index为4，及对应下方链接为"温泉和盐雾疗愈室"，此处没有更多按钮 -->
+                  <!-- <router-link to="/package">更多<img src="../assets/icon/more.png" alt="" width="14px" height="14px"/></router-link> -->
                 </div>
               </div>
             </div>
             <div class="hotel_show">
-              <img :src="item" alt="" width="100%" />
+              <img :src="item" alt="" width="100%" /> 
             </div>
           </div>
         </swiper-slide>
@@ -65,13 +80,14 @@
           <div class="swiper-button-prev" slot="button-prev"></div>
           <div class="swiper-button-next" slot="button-next"></div> -->
       </swiper>
-      <div class="hotel_link">
+      <div class="hotel_link" >
         <a href="" :class="{'activated':carouselActiveIndex==0}" @mouseenter="updateHoverState(true,0)" @mouseleave="updateHoverState(false,0)">酒店概览</a>
         <a href="" :class="{'activated':carouselActiveIndex==1}" @mouseenter="updateHoverState(true,1)" @mouseleave="updateHoverState(false,1)">酒店设施</a>
         <a href="" :class="{'activated':carouselActiveIndex==2}" @mouseenter="updateHoverState(true,2)" @mouseleave="updateHoverState(false,2)">养生套餐</a>
         <a href="" :class="{'activated':carouselActiveIndex==3}" @mouseenter="updateHoverState(true,3)" @mouseleave="updateHoverState(false,3)">每日工坊</a>
         <a href="" :class="{'activated':carouselActiveIndex==4}" @mouseenter="updateHoverState(true,4)" @mouseleave="updateHoverState(false,4)">温泉和盐雾疗愈室</a>
       </div>
+     
     </div>
     <Footer/>
   </div>
@@ -94,6 +110,7 @@ export default {
   },
   data() {
     return {
+      port: 1, //1 pc端  2 移动端
       w: "",
       h: "",
       movetoFirstSecond: false,
@@ -121,35 +138,15 @@ export default {
           el: ".swiper-pagination",
         },
         loop: true,
-        // autoplay: {
-        //   delay: 4000,
-        //   disableOnInteraction: false,
-        // },
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         },
       },
-      // swiperOptions2: {
-      //   pagination: {
-      //     el: ".swiper-pagination",
-      //   },
-      //   loop: true,
-      //   autoplay: {
-      //     delay: 4000,
-      //     disableOnInteraction: false,
-      //   },
-      //   navigation: {
-      //     nextEl: ".swiper-button-next",
-      //     prevEl: ".swiper-button-prev",
-      //   },
-      //   on: {
-      //     slideChange: function () {
-      //       // this.carouselActiveIndex = this.activeIndex;
-      //       // console.log("改变了，activeIndex为" + carouselActiveIndex);
-      //     },
-      //   },
-      // },
       hotelInstr: [
         "作为一家纯粹的养生酒店，我们致力于帮助客人从忙碌和压力中回归自我，达到身体、情绪、大脑和心灵上的幸福与健康，为客人提供养生知识的普及，使客人离开酒店之后依然保持平衡和愉悦的生活状态，让酒店的客人从身、心、灵全方位完全释放，享受生命的丰足与神圣！",
         "酒店拥有80间客房、原生态有机健康餐厅、400平米的宴会厅、3间健康咨询室、18间理疗室、泳池、多功能健身房、瑜伽亭、森林功法平台、多功能工坊、儿童俱乐部等。",
@@ -170,10 +167,10 @@ export default {
           el: ".swiper-pagination",
         },
         loop: true,
-        autoplay: {
-          delay: 6000,
-          disableOnInteraction: false,
-        },
+        // autoplay: {
+        //   delay: 6000,
+        //   disableOnInteraction: false,
+        // },
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
@@ -204,10 +201,23 @@ export default {
     },
   },
   mounted() {
+     if (this._isMobile()) {
+      console.log("手机端");
+      this.port = 2;
+    } else {
+      console.log("pc端");
+      this.port = 1;
+    }
     this.w = document.documentElement.clientWidth / 1920;
     this.h = document.documentElement.clientHeight / 1080;
   },
   methods: {
+     _isMobile() {
+      let flag = navigator.userAgent.match(
+        /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+      );
+      return flag;
+    },
     click(){
       console.log('执行了click');
     },
@@ -265,6 +275,36 @@ export default {
 
 <style lang="scss" scoped>
 // @import url(../assets/css/global.css);
+
+//移动端样式start
+
+
+
+
+.welcome-port{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.welcome-port p{
+   text-align: justify;
+   line-height: 20px;
+}
+
+.welcome-port h3 {
+  font-size: 12px;
+  font-weight: bold;
+  color: rgb(0,65,56);
+  white-space: nowrap;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+//移动端样式end
+
 .title {
   position: absolute;
   color: white;
@@ -314,7 +354,8 @@ export default {
 }
 .explore_more > div {
   position: absolute;
-  padding: 100px;
+  // padding: 100px;
+  padding: 80px;
   width: 100%;
   box-sizing: border-box;
   top: 50%;
@@ -325,8 +366,9 @@ export default {
   line-height: 28px;
   text-align: justify;
 }
-.more > div {
+.more > a {
   display: flex;
+  color: #404040;
   justify-content: space-between;
   width: 52px;
   padding: 10px;
@@ -350,7 +392,6 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
 }
 .hotel_link a{
   color: #404040;
@@ -373,26 +414,57 @@ export default {
   .welcome,.hotel_link {
     padding: 30px 120px;
   }
-  .explore_more > div {padding: 100px;}
+  .explore_more > div {padding: 60px;}
+}
+@media screen and(max-width: 1320px) {
+  .explore_more > div {padding: 40px;}
 }
 @media screen and(max-width: 1024px) {
   .welcome,.hotel_link {
-    padding: 30px 60px;
+    padding: 20px 60px;
   }
-  .explore_more > div {padding: 70px;}
+  .explore_more > div {padding: 40px;}
 }
 @media screen and(max-width: 992px) {
   .welcome,.hotel_link {
-    padding: 30px 40px;
+    padding: 1px 40px;
   }
-  .explore_more > div {padding: 40px;}
 
   .wel_textInfo {
     margin-left: 40px;
   }
+
+  .hotel_link{
+    padding: 10px 0px 0px 0px;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hotel_link a{
+    font-size: 12px;
+    margin-top: 6px;
+  }
+  .banner-port{
+  width: 1071px;
+   height: 600px;
+   overflow: hidden;
+   background-size: cover;
 }
-@media screen and(max-width: 810px) {
+
+
+
+
+  .title p{
+    letter-spacing: 4px;
+    font-size: 16px;
+  }
+
+  .title{
+    width: 100%;
+  }
 }
-@media screen and(max-width: 660px) {
-}
+
 </style>

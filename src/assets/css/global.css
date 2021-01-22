@@ -1,11 +1,6 @@
-#app{
-  font-family: opensans !important;
-  font-family: "opensans" !important;
-}
 .header,
 .body,
 .footer {
-  font-family: opensans !important;
   font-family: "opensans" !important;
 }
 .body {

@@ -175,68 +175,55 @@
         </div>
       </div>
     </div>
-    <div v-if="port == 2">
-      <div class="item-logo header3">
+   <div v-if="port == 2">
+      <div class="item-logo2 header3">
         <router-link to="/"
           ><img
             src="../assets/icon/logo1.png"
             alt=""
-            width="80px"
-            height="48px"
+            width="50px"
+            height="28px"
         /></router-link>
-        <li class="tologin" @click="login">
+        <li class="tologin">
           <img
             src="../assets/icon/login1.png"
             alt=""
             width="22px"
             height="22px"
           />
-          <span class="tologin-text" style="margin-left: 10px">登陆</span>
+          <span class="tologin-text" style="margin-left: 10px;margin-right:20px;font-size:12px"  @click="login">登陆</span>
+
+           <img 
+            src="../assets/img/menu.png"
+            alt=""
+            width="20px"
+            height="15px" @click="show3 = !show3"
+          />
         </li>
       </div>
-
-      <div class="item">
+      <div style="width:100%;height:45px"></div>
+       <transition name="el-zoom-in-top">
+      <div class="item" v-show="show3">
         <router-link to="/" class="move">
-          <img
-            src="../assets/icon/hotel1.png"
-            alt=""
-            width="22px"
-            height="22px"
-          />
-          <span>酒店和度假村</span>
-          <div></div>
+          <span>首页</span>
         </router-link>
-        <router-link to="/brandstory" class="move">
-          <img
-            src="../assets/icon/brand1.png"
-            alt=""
-            width="21px"
-            height="21px"
-          />
-          <span>品牌故事</span>
-          <div></div>
+        <router-link to="/overview" class="move">
+          <span>酒店概览</span>
         </router-link>
-        <router-link to="/healthcare" class="move">
-          <img
-            src="../assets/icon/health1.png"
-            alt=""
-            width="21px"
-            height="21px"
-          />
-          <span>养生疗愈</span>
-          <div></div>
+        <router-link to="/installation" class="move">
+          <span>酒店设施</span>
         </router-link>
-        <router-link to="/cooperation" class="move">
-          <img
-            src="../assets/icon/cooperation1.png"
-            alt=""
-            width="22px"
-            height="22px"
-          />
-          <span>酒店合作</span>
-          <div></div>
+        <router-link to="/package" class="move">
+          <span>养生套餐</span>
+        </router-link>
+        <router-link to="/item" class="move">
+          <span>养生项目</span>
+        </router-link>
+        <router-link to="/workshop" class="move">
+          <span>每日工坊</span>
         </router-link>
       </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -245,11 +232,13 @@
 export default {
   created() {
     this.$store.commit("OpenLogPanel", false);
+  
   },
   data() {
     return {
       // openLogPanel: false,
       port: 1, //1 pc端  2 移动端
+      show3: false
     };
   },
   mounted() {
@@ -268,6 +257,10 @@ export default {
       );
       return flag;
     },
+
+    menu(){
+     
+    },
     login() {
       // this.openLogPanel = true;
       this.$store.commit("OpenLogPanel", true);
@@ -281,6 +274,11 @@ export default {
 <style scoped lang="scss">
 // @import url(../assets/css/reset.css);
 // 移动端样式开始
+.el-menu-vertical-demo:not(.el-menu--collapse){
+		height: 100%;
+}
+
+
 .item .router-link-exact-active div {
   display: none;
 }
@@ -293,8 +291,23 @@ export default {
   color: #ffffff;
 }
 .item-logo{
+  z-index: 9999;
   width: 100%;
+  position: fixed;
+  top: 0;
   padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item-logo2{
+  z-index: 9999;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  padding: 0px 20px 0px 20px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -302,27 +315,34 @@ export default {
 }
 .item {
   width: 100%;
+  position: fixed;
+  top: 0px;
+  right: 0;
+  background-color: rgba(0,0,0,0.8);
+  height: 100%;
+  z-index: 999;
   display: flex;
-  background-color: rgba(0,0,0,0.9);
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
 }
 .move {
-  padding: 10px;
+  width: 100%;
+  padding: 20px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .move span {
-  margin-left: 20px;
+  font-size: 13px;
 }
 // 移动端样式结束
 
 
 a:focus,
 a:hover {
-  color: rgb(0,65, 56);
+  color: #23527c;
   text-decoration: underline;
 }
 .header {
@@ -338,10 +358,12 @@ a:hover {
 
 // 移动端样式开始
 .header3 {
-  height: 70px;
+  height: 45px;
+  position: fixed;
+  top: 0;
   display: flex;
   width: 100%;
-  background-color: rgba(0,0,0,0.5);
+  background-color:#1c1c1c;
   justify-content: space-between;
   color: white;
 }
@@ -382,15 +404,13 @@ a:hover {
 
 
 .logo {
-  // margin-left: 240px;
   margin-left: 40px;
   margin-top: 16px;
 }
 .nav {
   margin-top: 16px;
-  // margin-right: 240px;
-  font-size: 12px;  
-  margin-right: 30px;
+  margin-right: 40px;
+  font-size: 12px;
 }
 .navItem {
   display: flex;
@@ -428,15 +448,13 @@ a:hover {
   align-items: flex-end;
 }
 .login {
-  // width: 111px;
   width: 90px;
-  // height: 46px;
   height: 34px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid white;
-  margin: 0 30px 7px 25px;
+  margin: 0 0px 7px 25px;
 }
 .header2 .login {
   border: 1px solid #404040;
@@ -451,40 +469,24 @@ a:hover {
 }
 
 @media screen and(max-width: 1440px) {
-  // .logo {
-  //   margin-left: 120px;
-  // }
-  // .nav {
-  //   margin-right: 120px;
-  // }
   .navItem {
     padding-left: 30px;
   }
-  // .login {margin: 0 30px 7px 30px;}
 }
 @media screen and(max-width: 1024px) {
-  // .logo {
-  //   margin-left: 60px;
-  // }
-  // .nav {
-  //   margin-right: 60px;
-  // }
 }
 @media screen and(max-width: 992px) {
-  // .logo {
-  //   margin-left: 20px;
-  // }
-  // .nav {
-  //   margin-right: 20px;
-  // }
+  .logo {
+    margin-left: 20px;
+  }
+  .nav {
+    margin-right: 20px;
+  }
 }
 @media screen and(max-width: 810px) {
   .navItem {
     padding-left: 30px;
   }
-  // .login {
-  //   margin: 0 30px;
-  // }
 }
 @media screen and(max-width: 660px) {
 }
