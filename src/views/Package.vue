@@ -24,11 +24,12 @@
           <div
             class="courseItem"
             :class="{ activated: activeIndex == index }"
-            @click="updateHoverState(true, index)"
+            @click="updateHoverState(index)"
+            @mouseenter="updateHoverState(index)"
             v-for="(item, index) in courses"
             :key="index"
           >
-            <img :src="item.img" alt="" />
+            <img :src="activeIndex==index ? item.img1 : item.img" alt="" />
 
             <p :style="{'color': (activeIndex==index ? '#fff':'#004138')}" v-if="port == 2" v-html="item.title_port"></p>
             <p v-if="port == 1">{{ item.title }}</p>
@@ -40,12 +41,13 @@
         </div>
 
          <swiper ref="mySwiper" :options="swiperOption_" v-if="port == 1">
-            <swiper-slide v-for="(item, index) in projects[0]" :key="index">
+            <!-- <swiper-slide v-for="(item, index) in projects[0]" :key="index"> -->
+            <swiper-slide v-for="(item, index) in courses[activeIndex].list" :key="index">
               <div class="project">
                 <div class="project_text">
                   <div>
                     <h3>{{ item.title }}</h3>
-                    <p v-html="item.content"></p>
+                    <p v-html="item.entireContents"></p>
                   </div>
                 </div>
                 <div class="project_img">
@@ -110,24 +112,31 @@ export default {
       courses: [
         {
           img: require("../assets/icon/spa2.png"),
+          img1: require("../assets/icon/spa1.png"),
           title: "排毒清体系列疗程",
           title_port: "排毒清体</br>系列疗程",
           list: [
             { show:false,
-              img: "../assets/img/package1-1.jpg",
+              img: require("../assets/img/package1-1.jpg"),
               title: "3天2晚基础净化套餐",
+              sign: "清洁身体 平静内心<br>纯净身心初体验",
+              entireContents:"2晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>淋巴排毒理疗（60分钟）<br>气内脏腹部排毒按摩（60分钟）<br>阿育吠陀鼻腔净化（60分钟）<br>绿茶肌肤排毒裹肤护理 （60分钟）<br>呼吸训练私教练习（60分钟）<br>免费参加每日工坊课程活动",
               content:"2晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>淋巴排毒理疗（60分钟）",
               contentmore:"气内脏腹部排毒按摩（60分钟）<br>阿育吠陀鼻腔净化（60分钟）<br>绿茶肌肤排毒裹肤护理 （60分钟）<br>呼吸训练私教练习（60分钟）<br>免费参加每日工坊课程活动",
             },
             { show:false,
-              img: "../assets/img/package1-1.jpg",
+              img: require("../assets/img/package1-2.jpg"),
               title: "4天3晚基础排毒套餐",
+              sign: "净化身体 平静心情<br>尽享轻盈舒畅",
+              entireContents:"3晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>淋巴排毒理疗（60分钟）<br>气内脏腹部排毒按摩（60分钟）<br>热石理疗（60分钟）<br>阿育吠陀鼻腔净化（60分钟）<br>绿茶肌肤排毒裹肤护理 （60分钟）<br>中医拔罐（60分钟）<br>呼吸训练私教练习（60分钟）<br>有氧排毒训练私教练习（60分钟）<br>免费参加每日工坊课程活动",
               content:"2晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>淋巴排毒理疗（60分钟）",
               contentmore:"气内脏腹部排毒按摩（60分钟）<br>阿育吠陀鼻腔净化（60分钟）<br>绿茶肌肤排毒裹肤护理 （60分钟）<br>呼吸训练私教练习（60分钟）<br>免费参加每日工坊课程活动",
             },
             { show:false,
-              img: "../assets/img/package1-1.jpg",
+              img: require("../assets/img/package1-3.jpg"),
               title: "6天5晚基础排毒套餐",
+              sign: "净化身体 疗愈身心<br>感受由内而外的纯净",
+              entireContents:"5晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>淋巴排毒理疗（60分钟）<br>气内脏腹部排毒按摩（60分钟）<br>阿育吠陀双人四手按摩（60分钟）<br>行星颂钵理疗（60分钟）<br>热石理疗（60分钟）<br>阿育吠陀鼻腔净化（60分钟）<br>绿茶肌肤排毒裹肤护理 （60分钟）<br>茶粉磨砂去角质护理（60分钟）<br>中医拔罐（60分钟）<br>中医推拿（60分钟）<br>呼吸训练私教练习（60分钟）<br>瑜伽私教练习（60分钟）<br>有氧排毒训练私教练习（60分钟）<br>免费参加每日工坊课程活动",
               content:"2晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>淋巴排毒理疗（60分钟）",
               contentmore:"气内脏腹部排毒按摩（60分钟）<br>阿育吠陀鼻腔净化（60分钟）<br>绿茶肌肤排毒裹肤护理 （60分钟）<br>呼吸训练私教练习（60分钟）<br>免费参加每日工坊课程活动",
             },
@@ -135,24 +144,31 @@ export default {
         },
         {
           img: require("../assets/icon/sleep2.png"),
+          img1: require("../assets/icon/sleep1.png"),
           title: "舒压睡眠系列疗程",
           title_port: "舒压睡眠</br>系列疗程",
           list: [
             { show:false,
-              img: "../assets/img/package1-1.jpg",
-              title: "3天2晚基础净化套餐",
+              img: require("../assets/img/package2-1.jpg"),
+              title: "3天2晚舒压放松套餐",
+              sign: "释放压力 放空思维<br>舒缓紧绷的身心",
+              entireContents:"2晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>行星颂钵理疗（60分钟）<br>泰式按摩（60分钟）<br>灵气疗愈（60分钟）<br>中医推拿（60分钟）<br>呼吸训练私教练习（60分钟）<br>免费参加每日工坊课程活动",
               content:"2晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>淋巴排毒理疗（60分钟）",
               contentmore:"气内脏腹部排毒按摩（60分钟）<br>阿育吠陀鼻腔净化（60分钟）<br>绿茶肌肤排毒裹肤护理 （60分钟）<br>呼吸训练私教练习（60分钟）<br>免费参加每日工坊课程活动",
             },
             { show:false,
-              img: "../assets/img/package1-1.jpg",
-              title: "4天3晚基础排毒套餐",
+              img: require("../assets/img/package2-2.jpg"),
+              title: "4天3晚睡眠提升套餐",
+              sign: "探索睡眠问题的根源<br>舒缓身心 如婴儿般酣睡",
+              entireContents:"3晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>行星颂钵理疗（60分钟）<br>灵气疗愈（60分钟）<br>头肩颈放松理疗（60分钟）<br>手部/足部护理（60分钟）<br>绿茶蜂蜜全身滋养护理（60分钟）<br>中医推拿（60分钟）<br>中医艾灸（60分钟）<br>呼吸训练私教练习（60分钟）<br>免费参加每日工坊课程活动",
               content:"2晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>淋巴排毒理疗（60分钟）",
               contentmore:"气内脏腹部排毒按摩（60分钟）<br>阿育吠陀鼻腔净化（60分钟）<br>绿茶肌肤排毒裹肤护理 （60分钟）<br>呼吸训练私教练习（60分钟）<br>免费参加每日工坊课程活动",
             },
             { show:false,
-              img: "../assets/img/package1-1.jpg",
-              title: "6天5晚基础排毒套餐",
+              img: require("../assets/img/package2-3.jpg"),
+              title: "6天5晚能量焕活套餐",
+              sign: "全面肌体调理<br>感受丰沛充足的生命能量 尽情舒展",
+              entireContents:"5晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>行星颂钵理疗（60分钟）<br>灵气疗愈（60分钟）<br>阿育吠陀双人四手按摩（60分钟）<br>头肩颈放松理疗（60分钟）<br>泰式按摩（60分钟）<br>手部/足部护理（60分钟）<br>绿茶蜂蜜全身滋养护理（60分钟）<br>绿茶抗氧化面部护理（60分钟）<br>中医推拿（60分钟）<br>中医艾灸（60分钟）<br>呼吸训练私教练习（60分钟）<br>瑜伽私教练习（60分钟）<br>力量训练私教练习（60分钟）<br>核心肌肉训练私教练习（60分钟）<br>免费参加每日工坊课程活动",
               content:"2晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>淋巴排毒理疗（60分钟）",
               contentmore:"气内脏腹部排毒按摩（60分钟）<br>阿育吠陀鼻腔净化（60分钟）<br>绿茶肌肤排毒裹肤护理 （60分钟）<br>呼吸训练私教练习（60分钟）<br>免费参加每日工坊课程活动",
             },
@@ -160,24 +176,31 @@ export default {
         },
         {
           img: require("../assets/icon/weight2.png"),
+          img1: require("../assets/icon/weight1.png"),
           title: "身姿和体重系列疗程",
           title_port: "身姿和体重</br>系列疗程",
           list: [
             { show:false,
-              img: "../assets/img/package1-1.jpg",
-              title: "3天2晚基础净化套餐",
+              img: require("../assets/img/package3-1.jpg"),
+              title: "3天2晚肩颈舒缓套餐",
+              sign: "放松肩颈<br>局部肌体调理 舒缓神经",
+              entireContents:"2晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>头肩颈放松理疗（60分钟）<br>软组织调整理疗（60分钟）<br>中医推拿（60分钟）<br>深层组织按摩（60分钟）<br>普拉提肩颈理疗私教练习（60分钟）<br>免费参加每日工坊课程活动",
               content:"2晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>淋巴排毒理疗（60分钟）",
               contentmore:"气内脏腹部排毒按摩（60分钟）<br>阿育吠陀鼻腔净化（60分钟）<br>绿茶肌肤排毒裹肤护理 （60分钟）<br>呼吸训练私教练习（60分钟）<br>免费参加每日工坊课程活动",
             },
             { show:false,
-              img: "../assets/img/package1-1.jpg",
-              title: "4天3晚基础排毒套餐",
+              img: require("../assets/img/package3-2.jpg"),
+              title: "4天3晚脊柱调理套餐",
+              sign: "拉直脊柱<br>局部肌体调理 平衡身姿",
+              entireContents:"3晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>头肩颈放松理疗（60分钟）<br>软组织调整理疗（60分钟）<br>快速背部释放疗法（60分钟）<br>中医推拿（60分钟）<br>深层组织按摩（60分钟）<br>全身平衡理疗（60分钟）<br>普拉提肩颈理疗私教练习（60分钟）<br>牵拉理疗私教练习（60分钟）<br>免费参加每日工坊课程活动",
               content:"2晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>淋巴排毒理疗（60分钟）",
               contentmore:"气内脏腹部排毒按摩（60分钟）<br>阿育吠陀鼻腔净化（60分钟）<br>绿茶肌肤排毒裹肤护理 （60分钟）<br>呼吸训练私教练习（60分钟）<br>免费参加每日工坊课程活动",
             },
             { show:false,
-              img: "../assets/img/package1-1.jpg",
-              title: "6天5晚基础排毒套餐",
+              img: require("../assets/img/package3-3.jpg"),
+              title: "6天5晚体重管理套餐",
+              sign: "调整身体脂肪比例<br>完美控制体重 减脂塑形",
+              entireContents:"5晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>淋巴排毒理疗（60分钟）<br>气内脏腹部排毒按摩（60分钟）<br>阿育吠陀双人四手按摩（60分钟）<br>热石理疗（60分钟）<br>泰式按摩（60分钟）<br>深层组织按摩（60分钟）<br>绿茶蜂蜜全身滋养护理（60分钟）<br>中医艾灸（60分钟）<br>瑜伽私教练习（60分钟）<br>水下太极私教练习（60分钟）<br>有氧排毒训练私教练习（60分钟）<br>核心肌肉训练私教练习（60分钟）<br>免费参加每日工坊课程活动",
               content:"2晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>淋巴排毒理疗（60分钟）",
               contentmore:"气内脏腹部排毒按摩（60分钟）<br>阿育吠陀鼻腔净化（60分钟）<br>绿茶肌肤排毒裹肤护理 （60分钟）<br>呼吸训练私教练习（60分钟）<br>免费参加每日工坊课程活动",
             },
@@ -185,58 +208,30 @@ export default {
         },
         {
           img: require("../assets/icon/parenting2.png"),
+          img1: require("../assets/icon/parenting1.png"),
           title: "亲子系列疗程",
           title_port: "亲子</br>系列疗程",
-           list: [
+          list: [
             { show:false,
-              img: "../assets/img/package1-1.jpg",
-              title: "3天2晚基础净化套餐",
+              img: require("../assets/img/package4-1.jpg"),
+              title: "3天2晚亲子假期套餐",
+              sign: "体验田园野趣<br>身心放松 享受美好假期",
+              entireContents:"2晚住宿<br>每日早中晚三餐<br>热石理疗（60分钟）<br>热带鲜果裹肤护理（60分钟）<br>儿童牛油果手足护理（60分钟）<br>呼吸训练私教练习（60分钟）<br>瑜伽私教练习（60分钟）<br>免费参加每日工坊课程活动",
               content:"2晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>淋巴排毒理疗（60分钟）",
               contentmore:"气内脏腹部排毒按摩（60分钟）<br>阿育吠陀鼻腔净化（60分钟）<br>绿茶肌肤排毒裹肤护理 （60分钟）<br>呼吸训练私教练习（60分钟）<br>免费参加每日工坊课程活动",
             },
             { show:false,
-              img: "../assets/img/package1-1.jpg",
-              title: "4天3晚基础排毒套餐",
+              img: require("../assets/img/package4-2.jpg"),
+              title: "4天3晚水果SPA体验套餐",
+              sign: "乐活鲜果 感受新鲜与活力<br>新奇的鲜果SPA体验假期",
+              entireContents:"3晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>头肩颈放松理疗（60分钟）<br>软组织调整理疗（60分钟）<br>快速背部释放疗法（60分钟）<br>中医推拿（60分钟）<br>深层组织按摩（60分钟）<br>全身平衡理疗（60分钟）<br>普拉提肩颈理疗私教练习（60分钟）<br>牵拉理疗私教练习（60分钟）<br>免费参加每日工坊课程活动",
               content:"2晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>淋巴排毒理疗（60分钟）",
               contentmore:"气内脏腹部排毒按摩（60分钟）<br>阿育吠陀鼻腔净化（60分钟）<br>绿茶肌肤排毒裹肤护理 （60分钟）<br>呼吸训练私教练习（60分钟）<br>免费参加每日工坊课程活动",
-            },
-            { show:false,
-              img: "../assets/img/package1-1.jpg",
-              title: "6天5晚基础排毒套餐",
-              content:"2晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>淋巴排毒理疗（60分钟）",
-              contentmore:"气内脏腹部排毒按摩（60分钟）<br>阿育吠陀鼻腔净化（60分钟）<br>绿茶肌肤排毒裹肤护理 （60分钟）<br>呼吸训练私教练习（60分钟）<br>免费参加每日工坊课程活动",
-            },
+            }
           ],
         },
       ],
-
-      projects: [
-        [
-          {
-            title: "3天2晚基础净化套餐",
-            content:
-              "2晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>淋巴排毒理疗（60分钟）<br>气内脏腹部排毒按摩（60分钟）<br>阿育吠陀鼻腔净化（60分钟）<br>绿茶肌肤排毒裹肤护理 （60分钟）<br>呼吸训练私教练习（60分钟）<br>免费参加每日工坊课程活动",
-            img: require("../assets/img/package1-1.jpg"),
-            sign: "清洁身体 平静内心<br>纯净身心初体验",
-          },
-          {
-            title: "4天3晚基础排毒套餐",
-            content:
-              "3晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>淋巴排毒理疗（60分钟）<br>气内脏腹部排毒按摩（60分钟）<br>热石理疗（60分钟）<br>阿育吠陀鼻腔净化（60分钟）<br>绿茶肌肤排毒裹肤护理 （60分钟）<br>中医拔罐（60分钟）<br>呼吸训练私教练习（60分钟）<br>有氧排毒训练私教练习（60分钟）<br>免费参加每日工坊课程活动",
-            img: require("../assets/img/package1-2.jpg"),
-            sign: "净化身体 平静心情<br>尽享轻盈舒畅",
-          },
-          {
-            title: "6天5晚基础排毒套餐",
-            content:
-              "5晚住宿<br>每日早中晚三餐<br>健康咨询和体质评估（45分钟）<br>淋巴排毒理疗（60分钟）<br>气内脏腹部排毒按摩（60分钟）<br>阿育吠陀双人四手按摩（60分钟）<br>行星颂钵理疗（60分钟）<br>热石理疗（60分钟）<br>阿育吠陀鼻腔净化（60分钟）<br>绿茶肌肤排毒裹肤护理 （60分钟）<br>茶粉磨砂去角质护理（60分钟）<br>中医拔罐（60分钟）<br>中医推拿（60分钟）<br>呼吸训练私教练习（60分钟）<br>瑜伽私教练习（60分钟）<br>有氧排毒训练私教练习（60分钟）<br>免费参加每日工坊课程活动",
-            img: require("../assets/img/package1-3.jpg"),
-            sign: "净化身体 疗愈身心<br>感受由内而外的纯净",
-          },
-        ],
-      ],
-      hoverState: false,
-      activeIndex: 10,
+      activeIndex: 0,
       navindex: 0,
     };
   },
@@ -261,11 +256,11 @@ export default {
         ? (this.movetoFirstSecond = true)
         : (this.movetoFirstSecond = false);
     },
-    updateHoverState(isHover, index) {
+    updateHoverState( index) {
       console.log("选择的下标index", index);
       this.navindex = index;
-      this.hoverState = isHover;
       this.activeIndex = index;
+      console.log(this.courses[this.activeIndex].list);
     },
   },
   computed: {
@@ -276,10 +271,11 @@ export default {
           el: ".swiper-pagination",
         },
         loop: true,
-        // autoplay: {
-        //   delay: 4000,
-        //   disableOnInteraction: false,
-        // },
+        autoplay: {
+          delay: 8000,
+          disableOnInteraction: false,
+        },
+        speed:1500,
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
@@ -441,8 +437,11 @@ export default {
   flex: 1;
   position: relative;
   background-color: white;
+  overflow-y:auto;
 }
 .project_text > div {
+  display:table-cell;
+  vertical-align:middle;
   padding: 60px;
   box-sizing: border-box;
   width: 100%;
@@ -488,10 +487,32 @@ export default {
   .main-info {
     padding: 0 120px;
   }
+  .project_text > div {padding: 30px;}
+  .project_text p {
+  line-height: 24px;
+  }
+}
+@media screen and(max-width: 1240px) {
+  .project_text > div {padding: 20px;}
+  .project_text p {
+  line-height: 22px;
+  }
+}
+@media screen and(max-width: 1180px) {
+  .project_text > div {top: 0;left:0;transform: translate(0,0);}
+}
+@media screen and(max-width: 1120px) {
+  .project_text > div {padding: 20px;}
+  .project_text p {
+  line-height: 22px;
+  }
 }
 @media screen and(max-width: 1024px) {
   .main-info {
     padding: 0 60px;
+  }
+  .project_text p {
+  line-height: 20px;
   }
 }
 @media screen and(max-width: 992px) {

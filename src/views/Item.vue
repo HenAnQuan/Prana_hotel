@@ -102,6 +102,7 @@ export default {
           delay: 4000,
           disableOnInteraction: false,
         },
+        speed:1500,
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
@@ -222,7 +223,9 @@ export default {
   padding: 10px 0;
 }
 .item_title{text-align: center;}
-.item_img img{vertical-align: middle;}
+// .item_img{position: relative;}
+.item_img img{vertical-align: middle;transition: all 0.6s;z-index: 0;}
+// .item_img img:hover{transform: scale(1.1);}
 .special_item>p{margin-top: 10px;text-align: center;line-height: 20px;}
 
 @media screen and(max-width: 1440px) {

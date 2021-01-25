@@ -2,16 +2,54 @@
   <div>
     <div class="footer" v-if="port == 1">
       <!-- tripadvisor评论 -->
-      <div class="tripadvisor">
+      <!-- <div class="tripadvisor">
         <div class="tripadvisor-logo">
           <img src="../assets/icon/tripadvisor.png" alt="" width="175px" />
           <p>前往店评Prana璞纳养生酒店</p>
         </div>
-        <!-- <div class="submit"> -->
         <input type="text" placeholder="请输入评论标题" />
         <button>提交</button>
-        <!-- </div> -->
-      </div>
+      </div> -->
+
+      <!-- 现评论 -->
+      <!-- <div class="tripadvisor">
+        <div class="tripadvisor-logo">
+          <p>前往店评Prana璞纳养生酒店</p>
+        </div>
+        <input type="text" placeholder="请输入评论" v-model="comment" />
+        <button @click="check">提交</button>
+      </div> -->
+
+      <form action name="fileinfo" class="fileinfo">
+        <div>
+          <h2>评论Prana璞纳养生酒店</h2>
+        <div class="comment">
+          <div class="commentText">
+            <div class="star">
+              <img :src="starsFinal==0 ? (index>=starsTemp ? star : star3) : (index>=starsFinal ? star : star3)" alt="" @mouseenter="activeStarAdd(index)" @mouseleave="activeStarReduce" @click="decideStars(index)"  v-for="(item,index) in 5" :key="index" width="30px">
+            </div>
+            <input type="text" placeholder="请输入评论" v-model="comment" />
+          </div>
+          <div class="img_box">
+            <div
+              class="img_size" v-for="(item, index) of imgList" :key="index"
+              v-show="imgList.length != 0">
+              <img v-if="item.file.type.indexOf('image') !== -1" :src="item.file.src"/>
+              <div class="remove_logo" @click="fileDel">×</div>
+            </div>
+            <div class="add_img" @click="fileClick" v-show="addState">
+              <span>+</span>
+            </div>
+            <button @click="uploadImage" class="submit" @click.prevent>提交</button>
+            <input id="inpu" name="files" style="display: none" @change="fileChange($event)" type="file" ref="file" accept="image/*"/>
+          </div>
+        </div>
+        </div>
+        
+      </form>
+
+
+
       <!-- 最底下黑色区域 -->
       <div class="copyright">
         <!-- 左侧logo -->
@@ -131,7 +169,25 @@ export default {
     return {
       // openLogPanel: false,
       port: 1, //1 pc端  2 移动端
+      comment: "", //输入框内容
+      // 上传图片
+      imgList: [],
+      addState: true,
+      star:require("../assets/icon/star1.png"),
+      star2:require("../assets/icon/star2.png"),
+      star3:require("../assets/icon/star3.png"),
+      starsTemp:0,
+      starsFinal:0,
     };
+  },
+  watch: {
+    imgList() {
+      if (this.imgList.length == 9) {
+        this.addState = false;
+      } else {
+        this.addState = true;
+      }
+    }
   },
   mounted() {
     if (this._isMobile()) {
@@ -149,11 +205,203 @@ export default {
       );
       return flag;
     },
+    // 点击上传按钮时间
+    check() {
+      console.log(this.comment);
+    },
+    fileClick() {
+      document.getElementById("inpu").click();
+    },
+    fileChange(el) {
+      if (this.imgList.length>=3){console.log('最多可以上传3张照片',this.imgList);return;}
+      const list = this.$refs.file.files;
+      if (!el.target.files[0].size) return;
+      this.fileList(el.target);
+      el.target.value = "";
+    },
+    fileList(fileList) {
+      let files = fileList.files;
+      for (let i = 0; i < files.length; i++) {
+        //判断是否为文件夹
+        if (files[i].type != "") {
+          this.fileAdd(files[i]);
+        } else {
+          //文件夹处理
+          this.folders(fileList.items[i]);
+        }
+      }
+    },
+    //文件夹处理
+    folders(files) {
+      let _this = this;
+      //判断是否为原生file
+      if (files.kind) {
+        files = files.webkitGetAsEntry();
+      }
+      files.createReader().readEntries(function(file) {
+        for (let i = 0; i < file.length; i++) {
+          if (file[i].isFile) {
+            _this.foldersAdd(file[i]);
+          } else {
+            _this.folders(file[i]);
+          }
+        }
+      });
+    },
+    foldersAdd(entry) {
+      let _this = this;
+      entry.file(function(file) {
+        _this.fileAdd(file);
+      });
+    },
+    fileAdd(file) {
+      //总大小
+      this.size = this.size + file.size;
+      let reader = new FileReader();
+      reader.vue = this;
+      reader.readAsDataURL(file);
+      reader.onload = function() {
+        file.src = this.result;
+        this.vue.imgList.push({
+          file
+        });
+      };
+    },
+    fileDel(index) {
+      this.imgList.splice(index, 1);
+    },
+    bytesToSize(bytes) {
+      if (bytes === 0) return "0 B";
+      let k = 1000, // or 1024
+        sizes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"],
+        i = Math.floor(Math.log(bytes) / Math.log(k));
+      return (bytes / Math.pow(k, i)).toPrecision(3) + " " + sizes[i];
+    },
+    uploadImage: function() {
+      var form = document.forms.namedItem("fileinfo");
+      var formData = new FormData(form);
+      for (var i = 0; i < this.imgList.length; i++) {
+        formData.append("file" + [i + 1], this.imgList[i].file);
+        // console.log(this.imgList);
+      }
+      // this.imgList 存储上传的图片信息
+      console.log(this.imgList);
+      // this.starsFinal 存储上传的评分
+      console.log(this.starsFinal);
+      // this.comment 存储输入的评论文字信息
+      console.log(this.comment);
+    },
+
+    // 评论星星
+    activeStarAdd(num){
+      this.starsTemp = num+1;
+    },
+    activeStarReduce(){
+      this.starsTemp = 0;
+    },
+    decideStars(index){
+      this.starsFinal = index+1;
+    }
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.fileinfo{width: 100%;}
+.fileinfo>div{margin: 0 auto;}
+.fileinfo{margin: 0px auto;}
+.fileinfo{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-bottom: 30px;
+  h2{margin-bottom: 20px;font-weight: bold;}
+  .comment{
+    display: flex;
+    .commentText{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    }
+    .commentText .star{
+      // width: 240px;
+      // height: 40px;
+      // border: 1px solid yellow;
+    }
+    .commentText input{
+      width: 350px;
+      height: 40px;
+      padding: 0;
+      border: 1px solid #404040;
+      padding-left: 10px;
+    }
+    // 写到reset_custom.css中,供全局使用
+    // .commentText input:focus{
+    //   outline-color: #404040;
+    // }
+  }
+}
+.img_box {
+  width: 100%;
+  // padding: 30px 30px;
+  padding-left: 30px;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  .img_size {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    // padding: 5px;
+    padding-right: 5px;
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+    }
+    .remove_logo {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      // background: red;
+      border-radius: 25px;
+      top: 8px;
+      right: 15px;
+      text-align: center;
+      line-height: 10px;
+      font-size: 20px;
+      text-align: center;
+      color: white;
+      cursor: pointer;
+    }
+  }
+  .add_img {
+    width: 80px;
+    height: 80px;
+    // margin-top: 5px;
+    text-align: center;
+    line-height: 80px;
+    font-size: 60px;
+    color: #777777;
+    border: 1px dashed #404040;
+    border-radius: 5px;
+  }
+  .submit{
+    margin-left: 30px;
+    width: 120px;
+    height: 40px;
+    background-color: #1c1c1c;
+    color: white;
+    border-radius: 2px;
+    border: 1px solid #1c1c1c;
+  }
+  .submit:active{
+    background-color: #000;
+    color: white;
+  }
+}
+
 // 手机端样式开始
 
 .company-right{

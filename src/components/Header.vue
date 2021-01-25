@@ -4,7 +4,11 @@
     <!-- 当滚动到第二屏达到导航条的位置时，加载另一个 header2 样式；  首屏时,movetoFirstSecond值为false，加载header1样式 -->
     <div class="header" :class="{ 'header-fixed': isFixed }" v-if="port == 1">
       <!-- 当滚动到第二屏达到导航条的位置时，加载另一个 header2 样式；  首屏时,movetoFirstSecond值为false，加载header1样式 -->
-      <div v-if="movetoFirstSecond" class="header2">
+
+      <!-- 尝试使用vue-transition来添加过渡动画 -->
+      <transition name="fade">
+
+      <div v-if="movetoFirstSecond" class="header2 headerNav">
         <div class="logo">
           <router-link to="/"
             ><img
@@ -89,8 +93,15 @@
           </ul>
         </div>
       </div>
+
+      <!-- 尝试使用vue-transition来添加过渡动画 -->
+      </transition>
+
+      <!-- 尝试使用vue-transition来添加过渡动画 -->
+      <transition name="fade">
+
       <!-- 当首屏时加载图片 使用 header1样式 -->
-      <div v-else class="header1">
+      <div v-if="movetoFirstSecond!=true" class="header1 headerNav">
         <div class="logo">
           <router-link to="/"
             ><img
@@ -174,6 +185,11 @@
           </ul>
         </div>
       </div>
+
+
+      <!-- 尝试使用vue-transition来添加过渡动画 -->
+      </transition>
+
     </div>
    <div v-if="port == 2">
       <div class="item-logo2 header3">
@@ -272,7 +288,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
-// @import url(../assets/css/reset.css);
+.fade-enter-active, .fade-leave-active {
+  // transition: opacity .5s
+  transition: all 3s;
+}
+.fade-enter, .fade-leave-active {
+  // opacity: 0
+}
+.fade-enter{top: 0;}
+.fade-leave-active{top: -80px;}
+
 // 移动端样式开始
 .el-menu-vertical-demo:not(.el-menu--collapse){
 		height: 100%;
@@ -337,26 +362,7 @@ export default {
 .move span {
   font-size: 13px;
 }
-// 移动端样式结束
 
-
-a:focus,
-a:hover {
-  color: #23527c;
-  text-decoration: underline;
-}
-.header {
-  top: 0;
-  width: 100%;
-}
-.header-fixed {
-  position: fixed;
-  z-index: 99999;
-}
-
-
-
-// 移动端样式开始
 .header3 {
   height: 45px;
   position: fixed;
@@ -370,30 +376,40 @@ a:hover {
 // 移动端样式开结束
 
 
-.header1 {
-  height: 80px;
-  display: flex;
+
+// 这里的a标签样式需删除，添加到 reset_custom.css作为全局样式，要改颜色
+a:focus,
+a:hover {
+  color: #23527c;
+  text-decoration: underline;
+}
+// 把这里的样式移除，另外添加到header1，header2中。方便过渡动画中添加位移
+.header {
+  top: 0;
   width: 100%;
+}
+.header-fixed {
+  position: fixed;
+  z-index: 99999;
+}
+.header1 {
   background-image: linear-gradient(
     to bottom,
     rgba(28, 28, 28, 0.9),
     rgba(28, 28, 28, 0.6) 60%,
     rgba(28, 28, 28, 0)
   );
-  justify-content: space-between;
   color: white;
 }
 .header2 {
-  /* height: 120px; */
+  background-color: white;
+  color: #404040;
+}
+.headerNav {
   height: 80px;
   display: flex;
   width: 100%;
-  background-color: white;
   justify-content: space-between;
-  color: #404040;
-}
-.header1,
-.header2 {
 }
 .header1 > .nav > ul > li span {
   color: white;
