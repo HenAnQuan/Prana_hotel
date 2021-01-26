@@ -12,14 +12,6 @@
       </div> -->
 
       <!-- 现评论 -->
-      <!-- <div class="tripadvisor">
-        <div class="tripadvisor-logo">
-          <p>前往店评Prana璞纳养生酒店</p>
-        </div>
-        <input type="text" placeholder="请输入评论" v-model="comment" />
-        <button @click="check">提交</button>
-      </div> -->
-
       <form action name="fileinfo" class="fileinfo">
         <div>
           <h2>评论Prana璞纳养生酒店</h2>
@@ -45,7 +37,6 @@
           </div>
         </div>
         </div>
-        
       </form>
 
 
@@ -307,6 +298,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// 新评论样式开始
 .fileinfo{width: 100%;}
 .fileinfo>div{margin: 0 auto;}
 .fileinfo{margin: 0px auto;}
@@ -401,6 +393,7 @@ export default {
     color: white;
   }
 }
+// 新评论样式结束
 
 // 手机端样式开始
 
@@ -640,9 +633,9 @@ export default {
 }
 
 @media screen and(max-width: 1440px) {
-  .tripadvisor {
-    padding: 0 120px;
-  }
+  // .tripadvisor {
+  //   padding: 0 120px;
+  // }
   .submit > input {
     width: 100%;
   }
@@ -651,17 +644,17 @@ export default {
   // }
 }
 @media screen and(max-width: 1024px) {
-  .tripadvisor {
-    padding: 0 60px;
-  }
+  // .tripadvisor {
+  //   padding: 0 60px;
+  // }
   // .copyright {
   //   padding: 0 60px;
   // }
 }
 @media screen and(max-width: 992px) {
-  .tripadvisor {
-    padding: 0 20px;
-  }
+  // .tripadvisor {
+  //   padding: 0 20px;
+  // }
   // .copyright {
   //   padding: 0 20px;
   // }

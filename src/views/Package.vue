@@ -257,10 +257,10 @@ export default {
         : (this.movetoFirstSecond = false);
     },
     updateHoverState( index) {
-      console.log("选择的下标index", index);
+      // console.log("选择的下标index", index);
       this.navindex = index;
       this.activeIndex = index;
-      console.log(this.courses[this.activeIndex].list);
+      // console.log(this.courses[this.activeIndex].list);
     },
   },
   computed: {

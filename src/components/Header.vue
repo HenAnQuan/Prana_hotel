@@ -1,12 +1,12 @@
 <template>
   
-  <div>
+  <div class="navigation">
     <!-- 当滚动到第二屏达到导航条的位置时，加载另一个 header2 样式；  首屏时,movetoFirstSecond值为false，加载header1样式 -->
     <div class="header" :class="{ 'header-fixed': isFixed }" v-if="port == 1">
       <!-- 当滚动到第二屏达到导航条的位置时，加载另一个 header2 样式；  首屏时,movetoFirstSecond值为false，加载header1样式 -->
 
       <!-- 尝试使用vue-transition来添加过渡动画 -->
-      <transition name="fade">
+      <!-- <transition name="fade"> -->
 
       <div v-if="movetoFirstSecond" class="header2 headerNav">
         <div class="logo">
@@ -95,10 +95,12 @@
       </div>
 
       <!-- 尝试使用vue-transition来添加过渡动画 -->
-      </transition>
+      <!-- </transition> -->
+
+
 
       <!-- 尝试使用vue-transition来添加过渡动画 -->
-      <transition name="fade">
+      <!-- <transition name="fade"> -->
 
       <!-- 当首屏时加载图片 使用 header1样式 -->
       <div v-if="movetoFirstSecond!=true" class="header1 headerNav">
@@ -186,9 +188,8 @@
         </div>
       </div>
 
-
       <!-- 尝试使用vue-transition来添加过渡动画 -->
-      </transition>
+      <!-- </transition> -->
 
     </div>
    <div v-if="port == 2">
@@ -248,7 +249,6 @@
 export default {
   created() {
     this.$store.commit("OpenLogPanel", false);
-  
   },
   data() {
     return {
@@ -261,6 +261,10 @@ export default {
     if (this._isMobile()) {
       console.log("手机端");
       this.port = 2;
+
+      // 屏幕上下滑动事件监听
+      window.addEventListener('scroll', this.handleScroll, true); 
+
     } else {
       console.log("pc端");
       this.port = 1;
@@ -274,9 +278,29 @@ export default {
       return flag;
     },
 
-    menu(){
-     
+    // 屏幕上下滑动事件
+    handleScroll(){
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop || 
+                      document.body.scrollTop;
+            var scroll = scrollTop - this.i;
+            this.i = scrollTop;
+            let header3=document.getElementsByClassName("header3");
+            // console.log(header3[0]);
+            if(scroll<0){
+                // console.log('up');
+                header3[0].className = 'item-logo2 header3'
+            }else{
+                // console.log('down');
+                if (!header3[0].getAttribute('class').includes('not-top')) {
+                  header3[0].className = 'item-logo2 header3 not-top' // 添加类名 css里设置动画
+                }
+            }
     },
+    destroyed() {
+      window.removeEventListener("scroll",this.handleScroll, true);
+    },
+    // 屏幕上下滑事件完成
+
     login() {
       // this.openLogPanel = true;
       this.$store.commit("OpenLogPanel", true);
@@ -288,15 +312,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.fade-enter-active, .fade-leave-active {
-  // transition: opacity .5s
-  transition: all 3s;
-}
-.fade-enter, .fade-leave-active {
-  // opacity: 0
-}
-.fade-enter{top: 0;}
-.fade-leave-active{top: -80px;}
+// .fade-enter-active{
+//   transition: opacity 2s
+// }
+// .fade-leave-active {}
+// .fade-enter, .fade-leave-active {
+//   opacity: 0
+// }
+// .fade-enter{top: 0;}
+// .fade-leave-active{top: -80px;}
 
 // 移动端样式开始
 .el-menu-vertical-demo:not(.el-menu--collapse){
@@ -375,15 +399,35 @@ export default {
 }
 // 移动端样式开结束
 
+// 补充样式,样式覆盖上述header3,用于滑动屏幕时导航条的移动
+.navigation{
+  position: fixed;
+  top: 0;
+  z-index: 99999;
+  .header3 {
+  height: 45px;
+  position: fixed;
+  top: 0;
+  display: flex;
+  width: 100%;
+  background-color:#1c1c1c;
+  justify-content: space-between;
+  color: white;
+  transition: all 1.5s;
+  }
+  .not-top{
+    transform: translateY(-45px);
+  }
+}
+
 
 
 // 这里的a标签样式需删除，添加到 reset_custom.css作为全局样式，要改颜色
-a:focus,
-a:hover {
-  color: #23527c;
-  text-decoration: underline;
-}
-// 把这里的样式移除，另外添加到header1，header2中。方便过渡动画中添加位移
+// a:focus,
+// a:hover {
+//   color: #23527c;
+//   text-decoration: underline;
+// }
 .header {
   top: 0;
   width: 100%;

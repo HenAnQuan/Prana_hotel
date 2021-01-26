@@ -1,58 +1,5 @@
 <template>
-  <div class="container">
-    <Header :movetoFirstSecond="movetoFirstSecond" :isFixed="true"></Header>
-    <Login />
-    <div class="body">
-      <!-- 首屏背景 -->
-      <div class="firstScreen">
-        <!-- <swiper ref="mySwiper" :options="swiperOptions1" class="mySwiper">
-          <swiper-slide v-for="(item, index) in banners1" :key="index">
-            <div>
-              <div class="title">
-                <p>{{ title[index] }}</p>
-              </div>
-              <img :src="item" alt="" class="banner-port"/>
-            </div>
-          </swiper-slide>
-        </swiper> -->
-
-        <!-- 更换新的轮播样式 -->
-        <!-- 由于导入的样式影响下面另外一个swiper,因此单独放到了一个组件中 -->
-        
-        <FirstSwiper/>
-
-      </div>
-
-      <!-- 酒店预订，等开业后再放上去 -->
-      <!-- <BookingHotel /> -->
-
-      <!-- 欢迎光临 -->
-      <div class="welcome" v-if="port == 1">
-        <div class="welText">
-          <div class="wel_title">
-            <h2>欢迎光临</h2>
-            <h3>舟山璞纳养生酒店</h3>
-          </div>
-          <div class="wel_textInfo">
-            <p>
-              舟山璞纳养生酒店为追求身心健康的旅行者带来独一无二的假期体验：<br />在享受悠然时光的同时，提升健康状况，并获得持续平衡的生活方式。
-              “走遍千山万水，也不过是为了找到一条走回自己内心的路。”舟山璞纳养生酒店，正是这条道路上的教育、哺育和传播能量的圣地。
-            </p>
-          </div>
-        </div>
-        <!-- <div class="welLine"></div> -->
-      </div>
-
-      <div class="welcome-port" v-if="port == 2">
-        <p>欢迎光临</p>
-        <h3>舟山璞纳养生酒店</h3>
-        <p>
-          舟山璞纳养生酒店为追求身心健康的旅行者带来独一无二的假期体验：在享受悠然时光的同时，提升健康状况，并获得持续平衡的生活方式。
-          “走遍千山万水，也不过是为了找到一条走回自己内心的路。”舟山璞纳养生酒店，正是这条道路上的教育、哺育和传播能量的圣地。
-        </p>
-      </div>
-
-      <!-- 酒店链接轮播图 -->
+  <div>
       <swiper ref="mySwiper" :options="swiperOption_">
         <swiper-slide v-for="(item, index) in banners2" :key="index">
           <div class="carousel_board">
@@ -96,6 +43,8 @@
                   /></router-link>
                 </div>
                 <div class="more" v-else>
+                  <!-- 当index为4，及对应下方链接为"温泉和盐雾疗愈室"，此处没有更多按钮 -->
+                  <!-- <router-link to="/package">更多<img src="../assets/icon/more.png" alt="" width="14px" height="14px"/></router-link> -->
                 </div>
               </div>
             </div>
@@ -104,6 +53,9 @@
             </div>
           </div>
         </swiper-slide>
+        <!-- <div class="swiper-pagination" slot="pagination"></div>
+          <div class="swiper-button-prev" slot="button-prev"></div>
+          <div class="swiper-button-next" slot="button-next"></div> -->
       </swiper>
       <div class="hotel_link">
         <a
@@ -142,49 +94,28 @@
           >温泉和盐雾疗愈室</a
         >
       </div>
-
-      <!-- <SecondSwiper/> -->
-    </div>
-    <Footer />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import Header from "@/components/Header.vue";
-import Footer from "@/components/Footer.vue";
-import BookingHotel from "@/components/BookingHotel.vue";
-import Login from "@/components/Login.vue";
-import FirstSwiper from "@/components/FirstSwiper.vue";
-import SecondSwiper from "@/components/SecondSwiper.vue";
-
 export default {
-  name: "Index",
-  components: {
-    Header,
-    Footer,
-    FirstSwiper,
-    // SecondSwiper,
-    // BookingHotel,
-    Login,
-  },
-  data() {
+    data() {
     return {
       port: 1, //1 pc端  2 移动端
       w: "",
       h: "",
       movetoFirstSecond: false,
       swiper2: "",
-      banners1: [
-        require("../assets/img/banner1-1-1.jpg"),
-        require("../assets/img/banner1-1-2.jpg"),
-        require("../assets/img/banner1-1-3.jpg"),
-      ],
-      title: [
-        "- 重塑平衡的生活方式 -",
-        "- 返璞归真的桃源秘境 - ",
-        "- 身心灵的疗愈盛宴 -",
-      ],
+      // banners1: [
+      //   require("../assets/img/banner1-1-1.jpg"),
+      //   require("../assets/img/banner1-1-2.jpg"),
+      //   require("../assets/img/banner1-1-3.jpg"),
+      // ],
+      // title: [
+      //   "- 重塑平衡的生活方式 -",
+      //   "- 返璞归真的桃源秘境 - ",
+      //   "- 身心灵的疗愈盛宴 -",
+      // ],
       carouselActiveIndex: 0,
       banners2: [
         require("../assets/img/banner1-2-1.jpg"),
@@ -331,72 +262,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-// @import 'swiper/css/swiper.css';
-// 导入轮播图转专用样式
-// @import url(../assets/css/swiperStyle.css);
-
-//移动端样式start
-
-.welcome-port {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 20px;
-}
-.welcome-port p {
-  text-align: justify;
-  line-height: 20px;
-}
-.welcome-port h3 {
-  font-size: 12px;
-  font-weight: bold;
-  color: rgb(0, 65, 56);
-  white-space: nowrap;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-//移动端样式end
-
-// 旧轮播样式
-.title {
-  position: absolute;
-  color: white;
-  top: 50%;
-  left: 50%;
-  font-size: 36px;
-  transform: translate(-50%, -50%);
-}
-.welcome {
-  padding: 80px 180px;
-}
-.welText {
-  display: flex;
-  align-items: center;
-}
-.welcome h2 {
-  font-size: 14px;
-  margin-bottom: 20px;
-}
-.welcome h3 {
-  font-size: 16px;
-  font-weight: bold;
-  color: rgb(0, 65, 56);
-  white-space: nowrap;
-}
-.wel_textInfo {
-  margin-left: 60px;
-}
-.wel_textInfo p {
-  line-height: 28px;
-  text-align: justify;
-}
-.welLine {
-  border-bottom: 1px solid #839c98;
-  margin-top: 10px;
-}
-
 .carousel_board {
   display: flex;
   align-items: stretch;
