@@ -11,8 +11,8 @@ module.exports = {
         'window.jQuery': 'jquery',
         Popper: ['popper.js', 'default']
        })
-    ]
-   },
+    ],
+   }
   //  css: {
   //   loaderOptions: {
   //     css: {},

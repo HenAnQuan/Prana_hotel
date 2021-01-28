@@ -5,7 +5,7 @@
             <div class="close"><img src="../assets/icon/close.png" alt="" width="20ppx" height="20px" @click="closeLogPanel"/></div>
             <div class="main">
                 <h2 class="title1">欢迎来到璞纳酒店</h2>
-                <div class="logo"><img src="../assets/icon/logo2.png" alt=""/></div>
+                <div class="logo"><img src="../assets/icon/logo2.png" alt="" width="70px"/></div>
                 <h2 class="title2">会员登陆</h2>
                 <div class="inputInfo"><input type="text" placeholder="请输入手机号或姓名"></div>
                 <div class="inputInfo"><input type="text" placeholder="请输入密码"></div>
@@ -13,8 +13,8 @@
                 <div class="additional">
                     <div class="checkbox"><label><input name="remember" type="checkbox" value="" />记住我</label></div>
                     <div class="jumpRegister">
-                        <router-link to="/register" style="color:#1c1c1c">忘记密码</router-link>
-                        <router-link to="/register" style="color:#1c1c1c">注册账号</router-link>
+                        <router-link :to="{name:'Register',params:{info:'forget'}}" style="color:#1c1c1c;font-size:12px">忘记密码&nbsp;</router-link>
+                        <router-link :to="{name:'Register',params:{info:'register'}}" style="color:#1c1c1c;font-size:12px;margin-left:6px">注册账号</router-link>
                     </div>
                 </div>
                 <button class="bt-login">登陆</button>
@@ -34,8 +34,8 @@
                 <div class="additional">
                     <div class="checkbox"><label class="rember-me" ><input name="remember" type="checkbox" value="" />记住我</label></div>
                     <div class="jumpRegister">
-                        <router-link to="/register" style="color:#1c1c1c;font-size:12px">忘记密码&nbsp;</router-link>
-                        <router-link to="/register" style="color:#1c1c1c;font-size:12px;margin-left:6px">注册账号</router-link>
+                        <router-link :to="{name:'Register',params:{info:'forget'}}" style="color:#1c1c1c;font-size:12px">忘记密码&nbsp;</router-link>
+                        <router-link :to="{name:'Register',params:{info:'register'}}" style="color:#1c1c1c;font-size:12px;margin-left:6px">注册账号</router-link>
                     </div>
                 </div>
                 <button class="bt-login">登陆</button>
@@ -85,13 +85,14 @@ export default {
         position: fixed;
         top: 0;
         width: 100%;
-        z-index: 9999;
+        z-index: 99999;
     }
     .login{
         display: none;
         position: fixed;
         right: 150px;
-        top: 251px;
+        top: 200px;
+        z-index: 99999;
     }
     .login_open{
         display: block;
@@ -105,10 +106,10 @@ export default {
         box-sizing: border-box;
     }
     .landingPanel{
-        width: 485px;
-        height: 578px;
+        // width: 485px;
+        // height: 578px;
         background-color: rgba(255,255,255,.95);
-        padding: 20px;
+        padding: 40px 50px;
     }
     .close,.main{
         width: 100%;
@@ -124,10 +125,12 @@ export default {
 
     .title1{
         margin: 18px auto 32px auto;
-        font-size: 24px;
+        font-size: 16px;
+        font-weight: bold;
     }
     .title2{
         margin: 22px auto 28px auto;
+        font-size: 14px;
     }
 
     .inputInfo>input{
@@ -141,20 +144,21 @@ export default {
         display: flex;
         align-items: center;
         width: 330px;
+        font-size: 14px;
     }
     .checkbox{
-        
     }
     .jumpRegister{
         flex: 1;
         // width: 100%;
     }
     .main>button{
-        width: 174px;
-        height: 54px;
+        width: 160px;
+        height: 45px;
         background: white;
         border: 1px solid #404040;
         margin-top: 42px;
+        font-size: 14px;
     }
 
 

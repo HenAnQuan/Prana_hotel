@@ -13,14 +13,15 @@
 
       <!-- 现评论 -->
       <form action name="fileinfo" class="fileinfo">
-        <div>
+        <div class="commentTitle">
           <h2>评论Prana璞纳养生酒店</h2>
-        <div class="comment">
-          <div class="commentText">
-            <div class="star">
+          <div class="star">
               <img :src="starsFinal==0 ? (index>=starsTemp ? star : star3) : (index>=starsFinal ? star : star3)" alt="" @mouseenter="activeStarAdd(index)" @mouseleave="activeStarReduce" @click="decideStars(index)"  v-for="(item,index) in 5" :key="index" width="30px">
             </div>
-            <input type="text" placeholder="请输入评论" v-model="comment" />
+          </div>
+        <div class="comment">
+          <div class="commentText">
+            <textarea placeholder="请输入评论" v-model="comment"></textarea>
           </div>
           <div class="img_box">
             <div
@@ -35,7 +36,6 @@
             <button @click="uploadImage" class="submit" @click.prevent>提交</button>
             <input id="inpu" name="files" style="display: none" @change="fileChange($event)" type="file" ref="file" accept="image/*"/>
           </div>
-        </div>
         </div>
       </form>
 
@@ -77,7 +77,7 @@
                 width="14px"
                 height="14px"
               /><span
-                >璞纳养生酒店集团&nbsp;&nbsp;&nbsp;地址：上海市恒南路688弄31号&nbsp;&nbsp;&nbsp;电话：021-33882933</span
+                >璞纳养生酒店集团&nbsp;地址：上海市恒南路688弄31号&nbsp;电话：021-33882933</span
               >
             </div>
             <div class="address2">
@@ -87,13 +87,15 @@
                 width="14px"
                 height="14px"
               /><span
-                >舟山璞纳养生酒店&nbsp;&nbsp;&nbsp;地址：舟山普陀塘头村&nbsp;&nbsp;&nbsp;电话：021-33882933</span
+                >舟山璞纳养生酒店&nbsp;地址：舟山普陀塘头村&nbsp;电话：021-33882933</span
               >
             </div>
           </div>
           <div class="copy">
             <p>
-              条款和条件Cookie政策&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;版权所有©2021安浙江益宏静方投资有限公司<br>【免责声明】部分图片来源于网络，仅为示意，如有侵权，请联系删除
+              条款和条件Cookie政策&nbsp;版权所有©2021安浙江益宏静方投资有限公司<br>
+              公安备案号xxxxxxxxxxxxx&nbsp;京ICP备xxxxxxxx号&nbsp;XXX〔xxxx〕xxxx-xxx号<br>
+              【免责声明】部分图片来源于网络，仅为示意，如有侵权，请联系删除
             </p>
           </div>
         </div>
@@ -140,14 +142,15 @@
             <div style="color: #fff; font-size: 10px;margin-top:12px;height:18px">电话：021-33882933</div>
         </div>
         </div>
-        
-        
+
      
       </div>
       
       <div class="navs">
         <p class="condition-one">条款和条件Cookie政策</p>
         <p class="condition-two">版权所有©2021安浙江益宏静方投资有限公司</p>
+        <p class="condition-two">公安备案号xxxxxxxxxxxxx&nbsp;京ICP备xxxxxxxx号</p>
+        <p class="condition-two">XXX〔xxxx〕xxxx-xxx号</p>
         <p class="condition-two">【免责声明】部分图片来源于网络，仅为示意，如有侵权，请联系删除</p>
       </div>
     </div>
@@ -299,7 +302,7 @@ export default {
 
 <style lang="scss" scoped>
 // 新评论样式开始
-.fileinfo{width: 100%;}
+.fileinfo{width: 50%;}
 .fileinfo>div{margin: 0 auto;}
 .fileinfo{margin: 0px auto;}
 .fileinfo{
@@ -307,23 +310,23 @@ export default {
   align-items: flex-start;
   flex-direction: column;
   margin-bottom: 30px;
-  h2{margin-bottom: 20px;font-weight: bold;}
+  .commentTitle{display: flex;align-items: center;border-bottom: 1px solid #404040;width: 100%;padding-bottom: 5px;margin-bottom: 20px;}
+  h2{font-weight: bold;margin-right: 20px;}
   .comment{
     display: flex;
+    width: 100%;
     .commentText{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    flex: 1;
     }
-    .commentText .star{
-      // width: 240px;
-      // height: 40px;
-      // border: 1px solid yellow;
-    }
-    .commentText input{
-      width: 350px;
-      height: 40px;
-      padding: 0;
+    .commentText textarea{
+      resize:none;
+      font-size: 14px;
+      box-sizing: border-box;
+      height: 84px;
+      padding: 5px;
       border: 1px solid #404040;
       padding-left: 10px;
     }
@@ -334,7 +337,7 @@ export default {
   }
 }
 .img_box {
-  width: 100%;
+  // width: 100%;
   // padding: 30px 30px;
   padding-left: 30px;
   box-sizing: border-box;
@@ -633,6 +636,7 @@ export default {
 }
 
 @media screen and(max-width: 1440px) {
+  .fileinfo{width: 60%;}
   // .tripadvisor {
   //   padding: 0 120px;
   // }
@@ -644,6 +648,7 @@ export default {
   // }
 }
 @media screen and(max-width: 1024px) {
+  .fileinfo{width: 70%;}
   // .tripadvisor {
   //   padding: 0 60px;
   // }
@@ -652,6 +657,7 @@ export default {
   // }
 }
 @media screen and(max-width: 992px) {
+  .fileinfo{width: 80%;}
   // .tripadvisor {
   //   padding: 0 20px;
   // }

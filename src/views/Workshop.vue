@@ -238,9 +238,7 @@ export default {
       return flag;
     },
     intoSecondscreen() {
-      window.scrollY >= 100
-        ? (this.movetoFirstSecond = true)
-        : (this.movetoFirstSecond = false);
+      window.scrollY >= document.documentElement.clientHeight-80 ? this.movetoFirstSecond = true : this.movetoFirstSecond = false;
     },
   },
   created() {

@@ -437,12 +437,8 @@ export default {
   z-index: 99999;
 }
 .header1 {
-  background-image: linear-gradient(
-    to bottom,
-    rgba(28, 28, 28, 0.9),
-    rgba(28, 28, 28, 0.6) 60%,
-    rgba(28, 28, 28, 0)
-  );
+  // background-image: linear-gradient(to bottom,rgba(28, 28, 28, 0.9),rgba(28, 28, 28, 0.6) 60%,rgba(28, 28, 28, 0));
+  background-image: linear-gradient(to bottom,rgba(28, 28, 28, 0.5),rgba(28, 28, 28, 0));
   color: white;
 }
 .header2 {

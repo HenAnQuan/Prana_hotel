@@ -8,7 +8,8 @@ const routes = [
   {
     path: '/',
     name: 'Index',
-    component: Index
+    component: Index,
+    meta:{title: 'Prana_hotel'}
   },
   {
     path: '/overview',
